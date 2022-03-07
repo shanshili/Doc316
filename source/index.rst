@@ -7,10 +7,11 @@
 ==================================
 
 .. toctree::
-   :maxdepth: 1
-   :caption: 项目
+   :maxdepth: 2
 
-   projects/IOT/index
+   learningroute/index
+   projects/index
+   tutorial/index
    about
 
 
