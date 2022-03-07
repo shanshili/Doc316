@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MQTT 3.1.1 协议 &mdash; DOC316 v0.1 文档</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="author" title="关于这些文档" href="../../about.html" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="欢迎来到DOC316" href="../../about.html" />
+    <link rel="prev" title="面向初学者的物联网全栈开发指南 - 6 - uni-app起步" href="%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%20-%206%20-.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> DOC316
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">项目</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">IOT</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/index.html">面向初学者的物联网全栈开发指南</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MQTT 3.1.1 协议</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#connack">确认连接 CONNACK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">固定报头</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">可变报头</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">载荷</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">应答 - 服务端</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#publish-0">发布消息 PUBLISH (等级0)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">固定报头</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">可变报头</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">载荷</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">示例</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#publish-1">发布消息 PUBLISH (等级1)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">固定报头</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">可变报头</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">载荷</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">响应 - 服务端</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">失败响应</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15"><em>示例</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#subscribe">订阅 SUBSCRIBE</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id16">固定报头</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">可变报头</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">载荷</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">订阅确认 SUBSCRIBE</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id20">固定报头</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">可变报头</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">载荷</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#unsubscribe">取消订阅 UNSUBSCRIBE</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id23">固定报头</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">可变报头</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">载荷</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">取消订阅确认 SUBSCRIBE</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id27">固定报头</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id28">可变报头</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ping">确认存活 PING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disconnect">断开 DISCONNECT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">消息获取</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">欢迎来到DOC316</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DOC316</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">IOT</a> &raquo;</li>
+      <li>MQTT 3.1.1 协议</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/projects/IOT/MQTT.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mqtt-3-1-1">
+<h1>MQTT 3.1.1 协议<a class="headerlink" href="#mqtt-3-1-1" title="永久链接至标题"></a></h1>
+<section id="connack">
+<h2>确认连接 CONNACK<a class="headerlink" href="#connack" title="永久链接至标题"></a></h2>
+<section id="id1">
+<h3>固定报头<a class="headerlink" href="#id1" title="永久链接至标题"></a></h3>
+<p><strong>固定位</strong> 10</p>
+<p><strong>剩余长度字段</strong> 固定报头之后的所有字段长度（16进制） XX</p>
+</section>
+<section id="id2">
+<h3>可变报头<a class="headerlink" href="#id2" title="永久链接至标题"></a></h3>
+<p><strong>协议名</strong> 00 04 4D 51 54 54</p>
+<p><strong>协议版本</strong> 04</p>
+<p><strong>连接标志</strong> C2</p>
+<p><strong>KeepAlive时长</strong> 00 64 (100秒)</p>
+</section>
+<section id="id3">
+<h3>载荷<a class="headerlink" href="#id3" title="永久链接至标题"></a></h3>
+<p>长度 + HEX内容</p>
+<p><strong>mqttclientId</strong> xx xx CONTENT={${clientId}|securemode=3,signmethod=hmacsha1|}</p>
+<p><strong>mqttUsername</strong> xx xx CONTENT={￥{DeviceName}&amp;￥{ProductKey}}</p>
+<p>**mqttPassword ** xx xx CONTENT={clientId￥{clientId}deviceName￥{devicename}productKey￥{productKey}}，通过DeviceSecret进行hmacsha1加密 地址：http://encode.chahuo.com/</p>
+</section>
+<section id="id4">
+<h3>应答 - 服务端<a class="headerlink" href="#id4" title="永久链接至标题"></a></h3>
+<p>20 02 00 00</p>
+<section id="id5">
+<h4><em>示例</em><a class="headerlink" href="#id5" title="永久链接至标题"></a></h4>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;ProductKey&quot;</span><span class="o">:</span> <span class="s2">&quot;a1ji0qFv6Jf&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;DeviceName&quot;</span><span class="o">:</span> <span class="s2">&quot;STC15&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;DeviceSecret&quot;</span><span class="o">:</span> <span class="s2">&quot;bc0834e2beeb03d37eeb7361cc387918&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>得到阿里云IOT三元组产品信息后，转换为MQTT连接参数，假设clientId为10001</p>
+<blockquote>
+<div><p>mqttclientId = 10001|securemode=3,signmethod=hmacsha1|</p>
+<p>mqttUsername = STC15&amp;a1ji0qFv6Jf</p>
+<p>mqttPassword = clientId10001deviceNameSTC15productKeya1ji0qFv6Jf</p>
+<p>mqttPassword(hmacsha1) = 4756856f5bc65bbbabc7a826d73de282ff87090d</p>
+</div></blockquote>
+<p>10 70 00 04 4D 51 54 54 04 C2 00 64 00 27 31 30 30 30 31 7C 73 65 63 75 72 65 6D 6F 64 65 3D 33 2C 73 69 67 6E 6D 65 74 68 6F 64 3D 68 6D 61 63 73 68 61 31 7C 00 11 53 54 43 31 35 26 61 31 6A 69 30 71 46 76 36 4A 66 00 28 34 37 35 36 38 35 36 66 35 62 63 36 35 62 62 62 61 62 63 37 61 38 32 36 64 37 33 64 65 32 38 32 66 66 38 37 30 39 30 64</p>
+<p>应答为 20 02 00 00</p>
+<p><strong>注意剩余长度超过128后：</strong> <length> + &lt;length/128&gt;</p>
+</section>
+</section>
+</section>
+<section id="publish-0">
+<h2>发布消息 PUBLISH (等级0)<a class="headerlink" href="#publish-0" title="永久链接至标题"></a></h2>
+<section id="id6">
+<h3>固定报头<a class="headerlink" href="#id6" title="永久链接至标题"></a></h3>
+<p><strong>固定位</strong> 30</p>
+<p><strong>剩余长度字段</strong> 固定报头之后的所有字段长度（16进制） XX</p>
+</section>
+<section id="id7">
+<h3>可变报头<a class="headerlink" href="#id7" title="永久链接至标题"></a></h3>
+<p><strong>TOPIC</strong> xx xx CONTENT</p>
+</section>
+<section id="id8">
+<h3>载荷<a class="headerlink" href="#id8" title="永久链接至标题"></a></h3>
+<p>CONTENT(无需长度)</p>
+</section>
+<section id="id9">
+<h3>示例<a class="headerlink" href="#id9" title="永久链接至标题"></a></h3>
+<p>TOPIC: /sys/a1ji0qFv6Jf/STC15/thing/event/property/post</p>
+<p>PayLoad: {”id”:”15”,”version”:”1.0”,”params”:{”Temp”: 02,”Hum”: 02,”Gas”: 02},”method”:”thing.event.property.set”}</p>
+<p>30 98 01 00 30 2F 73 79 73 2F 61 31 6A 69 30 71 46 76 36 4A 66 2F 53 54 43 31 35 2F 74 68 69 6E 67 2F 65 76 65 6E 74 2F 70 72 6F 70 65 72 74 79 2F 70 6F 73 74 7B 22 69 64 22 3A 22 31 37 22 2C 22 76 65 72 73 69 6F 6E 22 3A 22 31 2E 30 22 2C 22 70 61 72 61 6D 73 22 3A 7B 22 54 65 6D 70 22 3A 20 36 2C 22 48 75 6D 22 3A 20 36 2C 22 47 61 73 22 3A 20 36 7D 2C 22 6D 65 74 68 6F 64 22 3A 22 74 68 69 6E 67 2E 65 76 65 6E 74 2E 70 72 6F 70 65 72 74 79 2E 73 65 74 22 7D</p>
+</section>
+</section>
+<section id="publish-1">
+<h2>发布消息 PUBLISH (等级1)<a class="headerlink" href="#publish-1" title="永久链接至标题"></a></h2>
+<section id="id10">
+<h3>固定报头<a class="headerlink" href="#id10" title="永久链接至标题"></a></h3>
+<p><strong>固定位</strong> 32</p>
+<p><strong>剩余长度字段</strong> 固定报头之后的所有字段长度（16进制） XX</p>
+</section>
+<section id="id11">
+<h3>可变报头<a class="headerlink" href="#id11" title="永久链接至标题"></a></h3>
+<p><strong>TOPIC</strong> xx xx CONTENT</p>
+<p><strong>报文标识符</strong> 00 iD</p>
+</section>
+<section id="id12">
+<h3>载荷<a class="headerlink" href="#id12" title="永久链接至标题"></a></h3>
+<p>CONTENT(无需长度)</p>
+</section>
+<section id="id13">
+<h3>响应 - 服务端<a class="headerlink" href="#id13" title="永久链接至标题"></a></h3>
+<p>40 02 00 iD</p>
+</section>
+<section id="id14">
+<h3>失败响应<a class="headerlink" href="#id14" title="永久链接至标题"></a></h3>
+<p>第一位不是40，下次发布固定报头固定位为3A</p>
+</section>
+<section id="id15">
+<h3><em>示例</em><a class="headerlink" href="#id15" title="永久链接至标题"></a></h3>
+<blockquote>
+<div><p>/a1ji0qFv6Jf/STC15/user/temp</p>
+</div></blockquote>
+<p>32 29 00 1C 2F 61 31 6A 69 30 71 46 76 36 4A 66 2F 53 54 43 31 35 2F 75 73 65 72 2F 74 65 6D 70+CONTENT</p>
+</section>
+</section>
+<section id="subscribe">
+<h2>订阅 SUBSCRIBE<a class="headerlink" href="#subscribe" title="永久链接至标题"></a></h2>
+<section id="id16">
+<h3>固定报头<a class="headerlink" href="#id16" title="永久链接至标题"></a></h3>
+<p><strong>固定位</strong> 82</p>
+<p><strong>剩余长度字段</strong> 固定报头之后的所有字段长度（16进制） XX</p>
+</section>
+<section id="id17">
+<h3>可变报头<a class="headerlink" href="#id17" title="永久链接至标题"></a></h3>
+<p>00 0A</p>
+</section>
+<section id="id18">
+<h3>载荷<a class="headerlink" href="#id18" title="永久链接至标题"></a></h3>
+<p>TOPIC长度 + TOPIC内容HEX</p>
+<p><strong>TOPIC</strong> xx xx</p>
+<p><strong>QoS</strong> 服务质量等级 00 - 无需认证 01 - 认证一次 02 - 至少认证一次</p>
+</section>
+</section>
+<section id="id19">
+<h2>订阅确认 SUBSCRIBE<a class="headerlink" href="#id19" title="永久链接至标题"></a></h2>
+<section id="id20">
+<h3>固定报头<a class="headerlink" href="#id20" title="永久链接至标题"></a></h3>
+<p><strong>固定位</strong> 90</p>
+<p><strong>剩余长度字段</strong> 固定报头之后的所有字段长度（16进制） 03</p>
+</section>
+<section id="id21">
+<h3>可变报头<a class="headerlink" href="#id21" title="永久链接至标题"></a></h3>
+<p>00 XX（ID）</p>
+</section>
+<section id="id22">
+<h3>载荷<a class="headerlink" href="#id22" title="永久链接至标题"></a></h3>
+<p><strong>成功</strong> 服务质量等级 00 - 无需认证 01 - 认证一次 02 - 至少认证一次 （阿里云只回01）</p>
+<p><strong>失败</strong> 08</p>
+</section>
+</section>
+<section id="unsubscribe">
+<h2>取消订阅 UNSUBSCRIBE<a class="headerlink" href="#unsubscribe" title="永久链接至标题"></a></h2>
+<section id="id23">
+<h3>固定报头<a class="headerlink" href="#id23" title="永久链接至标题"></a></h3>
+<p><strong>固定位</strong> A2</p>
+<p><strong>剩余长度字段</strong> 固定报头之后的所有字段长度（16进制） XX</p>
+</section>
+<section id="id24">
+<h3>可变报头<a class="headerlink" href="#id24" title="永久链接至标题"></a></h3>
+<p>00 0A</p>
+</section>
+<section id="id25">
+<h3>载荷<a class="headerlink" href="#id25" title="永久链接至标题"></a></h3>
+<p>TOPIC长度 + TOPIC内容HEX</p>
+<p><strong>TOPIC</strong> xx xx</p>
+</section>
+</section>
+<section id="id26">
+<h2>取消订阅确认 SUBSCRIBE<a class="headerlink" href="#id26" title="永久链接至标题"></a></h2>
+<section id="id27">
+<h3>固定报头<a class="headerlink" href="#id27" title="永久链接至标题"></a></h3>
+<p><strong>固定位</strong> B0</p>
+<p><strong>剩余长度字段</strong> 固定报头之后的所有字段长度（16进制） 02</p>
+</section>
+<section id="id28">
+<h3>可变报头<a class="headerlink" href="#id28" title="永久链接至标题"></a></h3>
+<p>00 XX（ID）</p>
+</section>
+</section>
+<section id="ping">
+<h2>确认存活 PING<a class="headerlink" href="#ping" title="永久链接至标题"></a></h2>
+<p>C0 00</p>
+<p><strong>响应</strong> D0 00</p>
+</section>
+<section id="disconnect">
+<h2>断开 DISCONNECT<a class="headerlink" href="#disconnect" title="永久链接至标题"></a></h2>
+<p>E0 00</p>
+</section>
+<section id="id29">
+<h2>消息获取<a class="headerlink" href="#id29" title="永久链接至标题"></a></h2>
+<p>TOPIC： sys/a1ji0qFv6Jf/STC15/thing/event/property/post</p>
+<p>PayLoad： {”method”:”thing.service.property.set”,”id”:”934414241”,”params”:{”Light”:1},”version”:”1.0.0”}</p>
+<p>30 92 01</p>
+<p>00 31 2F 73 79 73 2F 61 31 6A 69 30 71 46 76 36 4A 66 2F 53 54 43 31 35 2F 74 68 69 6E 67 2F 73 65 72 76 69 63 65 2F 70 72 6F 70 65 72 74 79 2F 73 65 74</p>
+<p>7B 22 6D 65 74 68 6F 64 22 3A 22 74 68 69 6E 67 2E 73 65 72 76 69 63 65 2E 70 72 6F 70 65 72 74 79 2E 73 65 74 22 2C 22 69 64 22 3A 22 39 33 34 34 31 34 32 34 31 22 2C 22 70 61 72 61 6D 73 22 3A 7B 22 4C 69 67 68 74 22 3A 31 7D 2C 22 76 65 72 73 69 6F 6E 22 3A 22 31 2E 30 2E 30 22 7D</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%20-%206%20-.html" class="btn btn-neutral float-left" title="面向初学者的物联网全栈开发指南 - 6 - uni-app起步" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../about.html" class="btn btn-neutral float-right" title="欢迎来到DOC316" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2022, UJN12J316实验室.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

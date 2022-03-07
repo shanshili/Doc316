@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>面向初学者的物联网全栈开发指南 - 1 - 前言与技术路线 &mdash; DOC316 v0.1 文档</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="author" title="关于这些文档" href="../../../about.html" />
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> DOC316
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">项目</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">IOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">欢迎来到DOC316</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DOC316</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>面向初学者的物联网全栈开发指南 - 1 - 前言与技术路线</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/projects/IOT/FullStackJournal/fsj1.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>面向初学者的物联网全栈开发指南 - 1 - 前言与技术路线<a class="headerlink" href="#id1" title="永久链接至标题"></a></h1>
+<p>欢迎来到我的新专栏，本系列面向具备一定单片机或嵌入式系统开发基础的物联网初学者，旨在介绍新一代的物联网全栈开发流程。物联网是当今最火热的技术之一，其所依赖的平台已经发展的非常成熟，但面对种类繁多的平台和路线，刚刚接触物联网技术的小白往往不知从何学起， 本专栏将从单片机开始，一路向上直至手机和电脑终端，介绍一条学习成本相对低的物联网路线，手把手教您从硬件侧向客户端开发，通过一系列的学习，相信您肯定能体验到物联网全流程的开发，并构建一个简单的物联网项目。</p>
+<section id="id2">
+<h2>1. 技术路线<a class="headerlink" href="#id2" title="永久链接至标题"></a></h2>
+<p><strong>此部分涉及的一些名词可能您并未接触过，不用担心，在后续的章节里我将一一做介绍，您可以跳过，也可以大体浏览有一个印象，这部分也是帮助有一定基础的同学对本系列有更进一步的了解和定位。</strong></p>
+<p>![](面向初学者的物联网全栈开发指南 - 1 - .assets/1.1.png)</p>
+<section id="id3">
+<h3>1.1 硬件侧<a class="headerlink" href="#id3" title="永久链接至标题"></a></h3>
+<p>对于零基础硬件的同学，Arduino+ESP8266是非常好的物联网解决方案，有成熟的库和系统的教程，可以迅速做出一个物联网项目，但自由度相对较低。本系列面向具备一定硬件侧开发基础的同学，当然尽管也可直接面向ESP8266等联网芯片进行编程，但通用性较差，且上手难度也相对高，系列采用更为通用的MCU+联网芯片的方案，同时不会涉及系统性的嵌入式系统编程方面的知识，因为不同的芯片也会有所区别，但是对收发处理函数等会做较为详细的示范。</p>
+<p>MCU：单片机或嵌入式系统。如传统51架构的单片机，STM嵌入式系统，等。</p>
+<p>联网芯片：ESP8266。这是经典的WIFI物联网芯片了，本系列使用MCU通过串口通信AT指令实现对物联网芯片的控制和数据收发。</p>
+</section>
+<section id="id4">
+<h3>1.2 服务侧<a class="headerlink" href="#id4" title="永久链接至标题"></a></h3>
+<p>在传统的物联网解决方案中，往往需要开发者自行构建服务器与IOT平台相连接，本系列采用更容易上手的云空间（serverless）模式，开发者不需要进行复杂的配置，也不需要担心安全问题，只需完成数据库和API的对接即可，这里提供一个链接供您参考：<a class="reference external" href="https://uniapp.dcloud.io/uniCloud/README">什么是uniCloud - uni-app官网 (dcloud.io)</a></p>
+<p>IOT平台：阿里云IOT平台。IOT平台众多，本系列将借助阿里云IOT平台的文档，手把手教您与各个方向进行对接，其他的平台大同小异。</p>
+<p>服务侧：uniCloud云空间，云空间使用JavaScript进行编程，我将介绍所用到的基本知识，更多技术请读者按需学习。</p>
+</section>
+<section id="id5">
+<h3>1.3 客户端<a class="headerlink" href="#id5" title="永久链接至标题"></a></h3>
+<p>客户端选取基于Vue.js的uni-app，可以构建全平台应用，更多有关uni-app的信息可以参考：<a class="reference external" href="https://uniapp.dcloud.io/">uni-app官网 (dcloud.io)</a>，在相应的章节中，我将介绍基本的HTML，CSS，Vue.js知识，更多技术也请您按需学习，不用担心，这几门语言上手相对更快，适合快速构建起一个简单的项目。</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2022, UJN12J316实验室.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
