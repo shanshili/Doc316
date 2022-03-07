@@ -34,7 +34,12 @@ HTML部分非常简单，注意\<template>下只能有一个容器\<view>存在�
 + JS
 
 uni-app基于Vue，因此这一部分与Vue一致，
-
+```C
+void func(){
+    int i;
+    i = 1;
+}
+```
 ```js
 <script>
 	export default {
@@ -120,9 +125,9 @@ uni-app基于Vue，因此这一部分与Vue一致，
 下面我们只取得数组元素DeviceInfo部分即可，也就是
 
 ```js
-					success: (res) => {
-						console.log(res.result.DeviceInfo)
-					}
+success: (res) => {
+    console.log(res.result.DeviceInfo)
+}
 ```
 
 ![image-20210827212323623](面向初学者的物联网全栈开发指南 - 6 -.assets/image-20210827212323623.png)
