@@ -107,7 +107,7 @@
 <ul class="simple">
 <li><p><a class="reference external" href="https://help.aliyun.com/document_detail/69905.htm?spm=a2c4g.11186623.0.0.25b35b78iRrRQc#reference-vhm-npz-wdb">QueryDevice (aliyun.com)</a></p></li>
 </ul>
-<p>![image-20210827163637071](面向初学者的物联网全栈开发指南 - 5 -.assets/image-20210827163637071.png)</p>
+<p><img alt="image-20210827163637071" src="https://raw.githubusercontent.com/FZR95/Pic316/main/image-20210827163637071.png" /></p>
 <p>进入网页后，我们进入调试平台，也可以进入推荐的API开发者门户调试。在SDK示例中，选择使用原版SDK，选择与云空间相同语言的Node.js。页面左侧可以填写请求参数，参数的介绍都在API文档里有介绍，</p>
 <ul class="simple">
 <li><p>endpoint（服务地址）：对于公共实例一定是华东2（上海）；</p></li>
@@ -115,11 +115,11 @@
 <li><p>分页参数：PageSize 指定返回结果中每页显示的记录数量，最大值是50，默认值是10；CurrentPage指定显示返回结果中的第几页的内容，默认值是 1。</p></li>
 <li><p>IotInstanceId：公共实例无需填写。</p></li>
 </ul>
-<p>![image-20210827164018257](面向初学者的物联网全栈开发指南 - 5 -.assets/image-20210827164018257.png)</p>
+<p><img alt="image-20210827164018257" src="https://raw.githubusercontent.com/FZR95/Pic316/main/image-20210827164018257.png" /></p>
 <p>在页面右侧代码中可以看到，还有两项需要我们填写，accessKeyId和accessKeySecret，可以单机链接“获取AK”。对于阿里云，还可以悬停在右上角的用户图标，进入AccessKey管理页面，新建一个即可。AccessKey对应着用户的管理权限，要妥善保管，对于不同的项目成员，可以创建子用户，分配较低的权限共同管理项目。</p>
-<p>![image-20210827165233004](面向初学者的物联网全栈开发指南 - 5 -.assets/image-20210827165233004.png)</p>
+<p><img alt="image-20210827165233004" src="https://raw.githubusercontent.com/FZR95/Pic316/main/image-20210827165233004.png" /></p>
 <p>在我们现在所处的API调试平台无需填入AK，可以直接调用，填完参数之后直接运行示例，下方的shell就绪后输入回车，就可以看到我们的产品下属的设备了。</p>
-<p>![image-20210827170147121](面向初学者的物联网全栈开发指南 - 5 -.assets/image-20210827170147121.png)</p>
+<p><img alt="image-20210827170147121" src="https://raw.githubusercontent.com/FZR95/Pic316/main/image-20210827170147121.png" /></p>
 <p>在调用API后，IOT云平台会返回数据，我们重点关注Data这个数组，里面包含了我们需要请求的具体数据，如果数据较多，要考虑分页(Page)问题，具体的返回结构同样可以通过API文档查阅。</p>
 <p>常用的API有：</p>
 <p>​	QueryDevice：首先获取指定产品中的所有设备，接着使用以下的API遍历设备</p>
@@ -189,7 +189,7 @@
 </pre></div>
 </div>
 <p>在云函数上右击“上传并运行”，可以看到控制台的日志，日志返回的是result，即API返回的整个结果，可以直接打印result.Data，也即云函数实际返回的结果。</p>
-<p>![image-20210827175619639](面向初学者的物联网全栈开发指南 - 5 -.assets/image-20210827175619639.png)</p>
+<p><img alt="image-20210827175619639" src="https://raw.githubusercontent.com/FZR95/Pic316/main/image-20210827175619639.png" /></p>
 <p>通过uniCloud还可以快速建立云函数库，在云函数中将调用IOT平台API返回的数据直接存储到数据库，云函数具备定时器触发的功能，可以定时抓取来自IOT平台的数据，并建立自己的物联网设备信息数据库。</p>
 </section>
 </section>

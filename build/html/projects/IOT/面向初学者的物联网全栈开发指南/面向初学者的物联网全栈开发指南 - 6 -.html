@@ -101,7 +101,7 @@
 <section id="id2">
 <h2>2. 项目结构<a class="headerlink" href="#id2" title="永久链接至标题"></a></h2>
 <p>还是在上一章建立的uni-app中，直接在顶部选择运行，运行到浏览器即可看到当前的项目。uni-app为跨平台项目，运行到浏览器，项目将被编译为H5；运行到小程序模拟器，项目将被编译为对应的小程序；运行到手机或模拟器，项目将被编译为对应的应用程序。</p>
-<p>![image-20210827183207888](面向初学者的物联网全栈开发指南 - 6 -.assets/image-20210827183207888.png)</p>
+<p><img alt="image-20210827183207888" src="https://raw.githubusercontent.com/FZR95/Pic316/main/image-20210827183207888.png" /></p>
 <p>更细致的项目结构请参照文档，在这里只说常用的：</p>
 <ul class="simple">
 <li><p>pages：在这里右键可以新建页面，页面为.vue格式，一般放置在与页面名相同的文件夹下，index.vue默认为我们的主页（启动页）。</p></li>
@@ -123,13 +123,7 @@
 <li><p>JS</p></li>
 </ul>
 <p>uni-app基于Vue，因此这一部分与Vue一致，</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">func</span><span class="p">(){</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
-</div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>&lt;script&gt;
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span>&lt;script&gt;
 	export default {
 		data() {
 			return {
@@ -200,20 +194,20 @@
 </pre></div>
 </div>
 <p>在控制台中，我们看到了云函数返回的数据(result.Data)，</p>
-<p>![image-20210827212108809](面向初学者的物联网全栈开发指南 - 6 -.assets/image-20210827212108809.png)</p>
+<p><img alt="image-20210827212108809" src="https://raw.githubusercontent.com/FZR95/Pic316/main/image-20210827212108809.png" /></p>
 <p>下面我们只取得数组元素DeviceInfo部分即可，也就是</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">success</span><span class="o">:</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">DeviceInfo</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>![image-20210827212323623](面向初学者的物联网全栈开发指南 - 6 -.assets/image-20210827212323623.png)</p>
+<p><img alt="image-20210827212323623" src="https://raw.githubusercontent.com/FZR95/Pic316/main/image-20210827212323623.png" /></p>
 <p>产品下只有一个设备，所以返回的数组长度为1，第0个元素即我们设备1的详细信息。</p>
 </section>
 <section id="id6">
 <h3>3.3 一个示例<a class="headerlink" href="#id6" title="永久链接至标题"></a></h3>
 <p>现在构建一个页面显示产品下所有设备的名字和在线状态，我回到物联网平台多创建了两个设备，通过物联网平台的设备模拟器将他们激活。刷新H5页面，可以看到现在控制台打印出了三个设备，其中device3通过设备模拟器启动，为在线状态。</p>
-<p>![image-20210827212847830](面向初学者的物联网全栈开发指南 - 6 -.assets/image-20210827212847830.png)</p>
+<p><img alt="image-20210827212847830" src="https://raw.githubusercontent.com/FZR95/Pic316/main/image-20210827212847830.png" /></p>
 <p>现在将这个数组赋值到JS中data声明的一个名为Devices的数组里，这里我们提到了刚才的异步调用问题，申明that=this，并在异步函数中改this为that即可。</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span>&lt;script&gt;
 	export default {
@@ -255,7 +249,7 @@
 </pre></div>
 </div>
 <p>结果展示如图。</p>
-<p>![image-20210827213910743](面向初学者的物联网全栈开发指南 - 6 -.assets/image-20210827213910743.png)</p>
+<p><img alt="image-20210827213910743" src="https://raw.githubusercontent.com/FZR95/Pic316/main/image-20210827213910743.png" /></p>
 <p>至此，从MCU+ESP8266的硬件侧，到IOT云平台+uniCloud的服务侧，再到基于uni-app的跨平台客户端，整个物联网流程讲解完毕，大家可以消化吸收，通过文章给出的大量链接自行拓展学习。整个专栏六篇文章用了两天的时间写完，时间比较紧，如有错误和遗漏，请多多见谅，也请及时批评指出，多多交流。</p>
 <p>祝您在物联网的路上旅途愉快！</p>
 </section>
