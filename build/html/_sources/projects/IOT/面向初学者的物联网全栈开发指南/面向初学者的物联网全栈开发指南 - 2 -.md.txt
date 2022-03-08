@@ -18,9 +18,9 @@
 
 我们从文档中心中下载**【ESP8266系列模组用户手册】**，首先要使ESP8266进入正常工作状态，在【用户手册 - 4. 硬件指导】中，可以看到引脚定义和对应的上拉电阻（10kΩ），电源电压为3.3V，可以焊接一个简单的转接板以便调试使用。在【用户手册 - 2.2 启动模式】中，不同引脚电平对应了几种启动模式，典型应用对应运行模式，若需刷固件，则应选择下载模式。供电电源要特别注意，尽管有时使用USB转TTL供电同样可以正常使用，但串口的数据流一加大就会导致崩溃，因此建议使用MCU最小系统上的LDO输出。
 
-![ESP-01典型应用图](https://raw.githubusercontent.com/FZR95/Pic316/main/image-20210823104958332.png)
+![ESP-01典型应用图](https://gitee.com/FZR95/pic316/raw/master/image-20210823104958332.png)
 
-![ESP-01转接板](https://raw.githubusercontent.com/FZR95/Pic316/main/image-20210823111546726.png)
+![ESP-01转接板](https://gitee.com/FZR95/pic316/raw/master/image-20210823111546726.png)
 
 将ESP-01通过CH340连接至电脑串口，在其上电后会先以74880波特率打印启动信息，之后会切换到115200正常工作波特率。可以通过74880的启动信息看到此时ESP-01的工作状态，具体说明请参照【用户手册 - 6.5 启动信息说明】。
 
@@ -28,7 +28,7 @@
 
 MCU通过AT指令对ESP-01下达操作命令，命令格式以“AT+”开头，后接具体指令，以“\r\n”回车结尾，在默认模式下ESP-01会对每一条命令进行“OK”响应，也可以按照需求关掉“OK”响应。从文档中心下载**【ESP8266AT指令集】**，这里面包含了所有的AT指令，对应描述以及ESP-01的应答，在熟悉AT指令的使用后您可以根据需要自行配置ESP-01。还是强烈建议先通过PC对ESP-01进行调试，这里使用的是在win10应用商店里下载的串口调试助手，
 
-![串口调试助手使用说明](https://raw.githubusercontent.com/FZR95/Pic316/main/image-20210823114516602.png)
+![串口调试助手使用说明](https://gitee.com/FZR95/pic316/raw/master/image-20210823114516602.png)
 
 接下来进入我们的重头戏，通过AT指令对ESP-01进行配置，再次声明，我们首先使用PC调试。
 
@@ -75,4 +75,4 @@ void Esp8266_Init(void)
 
 这里还是要强调一下串口调试方法， 除了反复提及的分部调试外，还可以通过面包板，使用PC读取MCU和ESP-01之间的串口收发数据，从而确定命令之间的延迟时间等。
 
-![调试方法](https://raw.githubusercontent.com/FZR95/Pic316/main/MCUwithESP01.svg)
+![调试方法](https://gitee.com/FZR95/pic316/raw/master/MCUwithESP01.svg)
