@@ -17,7 +17,9 @@ Doc316使用Read the Docs进行托管，将Github仓库import到该网站，并�
 
 ## 2.【推荐】使用Markdown编写
 
+:::{important}
 Markdown易于编写且不依赖Python解释器及相关环境，因此推荐大家使用Markdown编写大纲。 Doc316内的大纲使用Markdown进行编写。你可以在网页右上角点击“ Edit on GitHub”查看构成本页的.md文件。
+:::
 
 > markdown不止是HTML的简化版，更重要的是txt的升级版、word的轻量版、笔记的最佳载体。
 > 作为一种简单的格式标记语言，不同于txt的无格式，不同于HTML的复杂标记，也不同于word的鼠标调整样式。markdown通过简单的几个字符键入，就可以快捷的定义文档的样式。
@@ -30,6 +32,8 @@ Markdown易于编写且不依赖Python解释器及相关环境，因此推荐大
 
 建议使用Typora编辑Markdown，他对下面所述插入图片所用的PicGo有专门的支持。Typora自1.0版本后开始收费，建议使用最后一个免费版本[0.11.18](https://www.jianshu.com/p/a80af3a01e1a)。[百度云盘](https://pan.baidu.com/s/19JNVF8wrxRnDnxqDEo3Vug
 )，提取码：lt05。
+
+在本项目架构所使用的MyST中，还支持更多功能：[MyST](https://myst-parser.readthedocs.io/en/latest/)。
 
 ## 3.上传Markdown内含的图片
 
