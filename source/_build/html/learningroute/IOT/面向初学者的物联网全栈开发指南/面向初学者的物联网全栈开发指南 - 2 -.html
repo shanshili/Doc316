@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>面向初学者的物联网全栈开发指南 - 2 - 硬件侧 &mdash; DOC316 v0.1 文档</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="author" title="关于这些文档" href="../../../about.html" />
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="面向初学者的物联网全栈开发指南 - 3 - IOT平台和MQTT协议" href="%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%20-%203%20-.html" />
+    <link rel="prev" title="面向初学者的物联网全栈开发指南 - 1 - 前言与技术路线" href="%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%20-%201%20-.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> DOC316
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">学习路径</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">IOT</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">面向初学者的物联网全栈开发指南</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%20-%201%20-.html">面向初学者的物联网全栈开发指南 - 1 - 前言与技术路线</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">面向初学者的物联网全栈开发指南 - 2 - 硬件侧</a></li>
+<li class="toctree-l4"><a class="reference internal" href="%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%20-%203%20-.html">面向初学者的物联网全栈开发指南 - 3 - IOT平台和MQTT协议</a></li>
+<li class="toctree-l4"><a class="reference internal" href="%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%20-%204%20-.html">面向初学者的物联网全栈开发指南 - 4 - 硬件侧上云</a></li>
+<li class="toctree-l4"><a class="reference internal" href="%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%20-%205%20-.html">面向初学者的物联网全栈开发指南 - 5 - uniCloud对接</a></li>
+<li class="toctree-l4"><a class="reference internal" href="%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%20-%206%20-.html">面向初学者的物联网全栈开发指南 - 6 - uni-app起步</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../MQTT.html">MQTT 3.1.1 协议</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../projects/index.html">项目</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">关于</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DOC316</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">学习路径</a> &raquo;</li>
+          <li><a href="../index.html">IOT</a> &raquo;</li>
+          <li><a href="index.html">面向初学者的物联网全栈开发指南</a> &raquo;</li>
+      <li>面向初学者的物联网全栈开发指南 - 2 - 硬件侧</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/learningroute/IOT/面向初学者的物联网全栈开发指南/面向初学者的物联网全栈开发指南 - 2 -.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>面向初学者的物联网全栈开发指南 - 2 - 硬件侧<a class="headerlink" href="#id1" title="永久链接至标题"></a></h1>
+<p>在本章，我们将学习ESP-01的使用方法，MCU与该芯片的通信。强烈建议在调试时要分开调试，例如先通过电脑调试ESP-01，一切工作正常后，再通过电脑调试MCU，两边都处于理想工作状态后，再将MCU与ESP-01对接。不要嫌麻烦，分开调试能够避免调试过程中的大部分问题，同时发现代码中的潜在问题，稳扎稳打会大大提高调试效率。</p>
+<section id="id2">
+<h2>1. 准备工具<a class="headerlink" href="#id2" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>串口调试助手</p></li>
+<li><p>ESP-01转接板（可选）</p></li>
+</ul>
+</section>
+<section id="esp8266">
+<h2>2. ESP8266<a class="headerlink" href="#esp8266" title="永久链接至标题"></a></h2>
+<p>在这里，我们使用安信可科技的<strong>ESP-01</strong>，淘宝上有很多厂商的ESP8266模组，作为初学者，在购买时一定要选择资料提供得的更全的厂商，可以免去早期走很多弯路。安信可同时提供很多基于ESP8266芯片方案的其他芯片，更高级的型号集成了MQTT协议、外围电路等，但是在这里我们为了了解一下基本原理，先从最基础的型号学起。在这里先将后面所用到的资源链接放一下</p>
+<ul class="simple">
+<li><p>模组介绍：<a class="reference external" href="https://docs.ai-thinker.com/esp8266">ESP8266系列模组专题 | 安信可科技 (ai-thinker.com)</a></p></li>
+<li><p>ESP8266文档中心：<a class="reference external" href="https://docs.ai-thinker.com/esp8266/docs">ESP8266文档中心 | 安信可科技 (ai-thinker.com)</a></p></li>
+</ul>
+<section id="esp-01">
+<h3>2.1 ESP-01典型应用<a class="headerlink" href="#esp-01" title="永久链接至标题"></a></h3>
+<p>我们从文档中心中下载**【ESP8266系列模组用户手册】**，首先要使ESP8266进入正常工作状态，在【用户手册 - 4. 硬件指导】中，可以看到引脚定义和对应的上拉电阻（10kΩ），电源电压为3.3V，可以焊接一个简单的转接板以便调试使用。在【用户手册 - 2.2 启动模式】中，不同引脚电平对应了几种启动模式，典型应用对应运行模式，若需刷固件，则应选择下载模式。供电电源要特别注意，尽管有时使用USB转TTL供电同样可以正常使用，但串口的数据流一加大就会导致崩溃，因此建议使用MCU最小系统上的LDO输出。</p>
+<p><img alt="ESP-01典型应用图" src="https://gitee.com/FZR95/pic316/raw/master/image-20210823104958332.png" /></p>
+<p><img alt="ESP-01转接板" src="https://gitee.com/FZR95/pic316/raw/master/image-20210823111546726.png" /></p>
+<p>将ESP-01通过CH340连接至电脑串口，在其上电后会先以74880波特率打印启动信息，之后会切换到115200正常工作波特率。可以通过74880的启动信息看到此时ESP-01的工作状态，具体说明请参照【用户手册 - 6.5 启动信息说明】。</p>
+</section>
+<section id="id3">
+<h3>2.2 ESP-01使用指南<a class="headerlink" href="#id3" title="永久链接至标题"></a></h3>
+<p>MCU通过AT指令对ESP-01下达操作命令，命令格式以“AT+”开头，后接具体指令，以“\r\n”回车结尾，在默认模式下ESP-01会对每一条命令进行“OK”响应，也可以按照需求关掉“OK”响应。从文档中心下载**【ESP8266AT指令集】**，这里面包含了所有的AT指令，对应描述以及ESP-01的应答，在熟悉AT指令的使用后您可以根据需要自行配置ESP-01。还是强烈建议先通过PC对ESP-01进行调试，这里使用的是在win10应用商店里下载的串口调试助手，</p>
+<p><img alt="串口调试助手使用说明" src="https://gitee.com/FZR95/pic316/raw/master/image-20210823114516602.png" /></p>
+<p>接下来进入我们的重头戏，通过AT指令对ESP-01进行配置，再次声明，我们首先使用PC调试。</p>
+</section>
+<section id="id4">
+<h3>2.3 芯片初始化<a class="headerlink" href="#id4" title="永久链接至标题"></a></h3>
+<ol>
+<li><p>AT+RST</p>
+<p>首先我们通过RST复位芯片，这是在使用外围芯片时习惯性的操作，可以保证芯片在上电后处于正常工作状态。</p>
+</li>
+<li><p>AT+CWMODE_CUR=1</p>
+<p>接下来设置WIFI模式为Station。Station为WIFI中的接收端，也就是连接一个WIFI热点，AP为WIFI中的发射端，提供接入服务(Access Point)，也就是热点。</p>
+<p>在众多指令中，后缀为”CUR”的表示不保存到Flash，因此芯片掉电后数据丢失，下次启动将不会自动连接WIFI，后缀为”DEF”的重新上电后仍生效，即仍设置为Station模式。由于初始化的指令在MCU中是固定的，建议不保存在Flash中，这样后面讲到的时序容易控制，方便写程序。</p>
+</li>
+<li><p>AT+CWJAP_CUR=”$WIFI名称”,”$WIFI密码”</p>
+<p>设置要连接热点的名称和密码。这里给不熟悉表达方式的同学特别说明一下，“$xxx”的意思是取值，取到的是名为“xxx”的变量值，在这个例子中，假设你的WIFI名称为“wlan1”，密码为“12345678”，那么应当发送的指令为：AT+CWJAP_CUR=”wlan1”,”12345678”</p>
+</li>
+</ol>
+<p>以上指令对应的响应请参照【ESP8266AT指令集】，到此我们成功地将ESP8266接入WIFI，在下一章我们将认识IOT平台，并通过MQTT协议将ESP8266接入IOT平台。</p>
+</section>
+</section>
+<section id="mcu">
+<h2>3. MCU配置<a class="headerlink" href="#mcu" title="永久链接至标题"></a></h2>
+<section id="id5">
+<h3>3.1 芯片初始化<a class="headerlink" href="#id5" title="永久链接至标题"></a></h3>
+<p>通过MCU串口发送对应的AT指令即可，注意AT指令末尾的“\r\n”换行符，在每条指令发送完毕后要留出一定的时间等待ESP-01设置完毕，尤其是”AT+CWJAP”接入热点这条命令需要留出足够的时间等待芯片成功连接。在普通应用中，对芯片初始化的时间要求不高，因此使用简单的延时操作即可，也可以通过读取芯片响应决定下一步指令，这将在之后的章节进行介绍。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//  ESP8266 Initialize</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">Esp8266_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;AT+RST</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay_ms</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;AT+CWMODE_CUR=1</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;AT+CIPMUX=0</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;AT+CWJAP_CUR=</span><span class="se">\&quot;</span><span class="s">$替换为您的WIFI名称</span><span class="se">\&quot;</span><span class="s">,</span><span class="se">\&quot;</span><span class="s">$替换为您的WIFI密码</span><span class="se">\&quot;\r\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay_ms</span><span class="p">(</span><span class="mi">12500</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>3.2 调试方法<a class="headerlink" href="#id6" title="永久链接至标题"></a></h3>
+<p>这里还是要强调一下串口调试方法， 除了反复提及的分部调试外，还可以通过面包板，使用PC读取MCU和ESP-01之间的串口收发数据，从而确定命令之间的延迟时间等。</p>
+<p><img alt="调试方法" src="https://gitee.com/FZR95/pic316/raw/master/MCUwithESP01.svg" /></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%20-%201%20-.html" class="btn btn-neutral float-left" title="面向初学者的物联网全栈开发指南 - 1 - 前言与技术路线" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%20-%203%20-.html" class="btn btn-neutral float-right" title="面向初学者的物联网全栈开发指南 - 3 - IOT平台和MQTT协议" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2022, UJN12J316实验室.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>编写属于你自己的大纲 &mdash; DOC316 v0.1 文档</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="关于这些文档" href="../about.html" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="使用reStructuredText 编写大纲" href="%E4%BD%BF%E7%94%A8reStructuredText%E7%BC%96%E5%86%99%E5%A4%A7%E7%BA%B2.html" />
+    <link rel="prev" title="教程" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DOC316
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../learningroute/index.html">学习路径</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/index.html">项目</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">教程</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">编写属于你自己的大纲</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1. 大纲架构介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#markdown">2.使用Markdown编写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.上传Markdown内含的图片</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restructuredtext">4. 使用reStructuredText 编写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#latex">5. Latex</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="%E4%BD%BF%E7%94%A8reStructuredText%E7%BC%96%E5%86%99%E5%A4%A7%E7%BA%B2.html">使用reStructuredText 编写大纲</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">关于</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DOC316</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">教程</a> &raquo;</li>
+      <li>编写属于你自己的大纲</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorial/tutorial.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>编写属于你自己的大纲<a class="headerlink" href="#id1" title="永久链接至标题"></a></h1>
+<section id="id2">
+<h2>1. 大纲架构介绍<a class="headerlink" href="#id2" title="永久链接至标题"></a></h2>
+<p><strong>此节将介绍Doc316所使用的架构，如果只想编写大纲的同学可以跳过此节。</strong></p>
+<p>Doc316由基于python的Sphinx构建，其原生支持的文档为 reStructuredText 即.rst格式文件。但Markdown在日常生活中使用更加普遍，因此为了使Sphinx支持Markdown，添加了recommonmark插件。本篇介绍使用Markdown编写。但插件对于Markdown的支持还是有限，比如格式要求严格，无法支持Latex等，如果不是上传之前写好的Markdown，或者纯文本文件，否则不推荐使用Markdown编写大纲。</p>
+<p>Doc316工程存储在Github上，每次更改完成后，由本地commit并push到<a class="reference external" href="https://github.com/FZR95/Doc316.git">Github仓库</a>。后续将建立起基于Github的合作构建。</p>
+<p>Doc316使用Read the Docs进行托管，将Github仓库import到该网站，并进行编译即可，由于注册为个人用户，所以网页中可能会有广告。</p>
+<p>推荐教程：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://t.csdn.cn/t1Tlw">Read the Docs 从懵逼到入门</a></p></li>
+</ul>
+</section>
+<section id="markdown">
+<h2>2.使用Markdown编写<a class="headerlink" href="#markdown" title="永久链接至标题"></a></h2>
+<p><em><strong>尽管本大纲架构已经添加了对于Markdown文件的支持，但并不支持其中的Latex（实际上Markdown本身并不要求支持Latex，但很多地方贴心地提供了支持）！因此如果有Latex，不推荐使用Markdown。本教程是纯文本结构，也是为了推荐大家在日常其他地方使用Markdown，因此使用了Markdown提供参考。</strong></em>
+Markdown易于编写且不依赖Python解释器及相关环境，因此推荐大家使用Markdown编写大纲。
+Doc316内的大纲使用Markdown进行编写。你可以在网页右上角点击“ Edit on GitHub”查看构成本页的.md文件。</p>
+<blockquote>
+<div><p>markdown不止是HTML的简化版，更重要的是txt的升级版、word的轻量版、笔记的最佳载体。
+作为一种简单的格式标记语言，不同于txt的无格式，不同于HTML的复杂标记，也不同于word的鼠标调整样式。markdown通过简单的几个字符键入，就可以快捷的定义文档的样式。
+比如在行首敲一个“#”，就把这行定义为了1级标题，并且有直观完善的着色，这样无需发布为web页面，可直接当word用。
+掌握markdown，你可以完全抛弃txt和笔记软件的编辑器，并且在大多数场景下替代掉复杂臃肿的word。享受简洁之美、享受效率提升。</p>
+<p>——摘自Hbuilder对md的介绍</p>
+</div></blockquote>
+<p>更加详细的教程建议参考<a class="reference external" href="https://www.runoob.com/markdown/md-tutorial.html">菜鸟教程</a>。</p>
+<p>建议使用Typora编辑Markdown，他对下面所述插入图片所用的PicGo有专门的支持。Typora自1.0版本后开始收费，建议使用最后一个免费版本<a class="reference external" href="https://www.jianshu.com/p/a80af3a01e1a">0.11.18</a>。<a class="reference external" href="https://pan.baidu.com/s/19JNVF8wrxRnDnxqDEo3Vug">百度云盘</a>，提取码：lt05。</p>
+</section>
+<section id="id3">
+<h2>3.上传Markdown内含的图片<a class="headerlink" href="#id3" title="永久链接至标题"></a></h2>
+<p>鉴于Sphinx的静态图片只能放到根目录下的_static文件夹，这对多用户，多项目并不方便，因此需要大家将图片上传至网络，并在文件中引用网络图片链接。</p>
+<p>建议使用PicGo配置Gitee图床，<a class="reference external" href="https://www.jianshu.com/p/26b4529dfd13">参考链接</a>。注意Gitee要建立开源仓库，否则别人看不到图片。</p>
+<p>使用Typora时，在偏好设置-图像中设置插入图片时自动复制到.asset文件夹，设置上传服务为PicGo，回到文档中，在图片上点击右键，上传图片，本地图片会自动替换为图床链接。</p>
+</section>
+<section id="restructuredtext">
+<h2>4. 使用reStructuredText 编写<a class="headerlink" href="#restructuredtext" title="永久链接至标题"></a></h2>
+<p>使用reStructuredText编写大纲时，需要配置Python解释器及相关环境，具体实例请看《使用reStructuredText 编写大纲》。</p>
+<blockquote>
+<div><p>Sphinx 是一种文档工具，它可以令人轻松的撰写出清晰且优美的文档, 由 Georg Brandl 在BSD 许可证下开发. 新版的Python文档就是由Sphinx生成的， 并且它已成为Python项目首选的文档工具,同时它对 C/C++ 项目也有很好的支持; 并计划对其它开发语言添加特殊支持。 除了写程序项目的文档之外，还可以用Sphinx写博客，其实用它来写博士论文都不在话下。 本文当然也是使用 Sphinx生成的，它采用reStructuredText! （博客首页为: <a class="reference external" href="https://link.zhihu.com/?target=https%3A//www.scibyte.cn/blog/zh/blog.html">https://www.scibyte.cn/blog/zh/blog.html</a>) 所以，Sphinx和rst有着不可分割的关系。 可以这么理解：Sphinx是一个Python写的程序，可以使用Python写配置及插件，将rst标记的文档生成各种优美的格式。 其特性如下：</p>
+<ol class="simple">
+<li><p><strong>「丰富的输出格式:」</strong> 支持 HTML (包括 Windows 帮助文档), LaTeX (可以打印PDF版本), manual pages（man 文档）, 纯文本</p></li>
+<li><p><strong>「完备的交叉引用:」</strong> 语义化的标签,并可以自动化链接函数,类,引文,术语及相似的片段信息</p></li>
+<li><p><strong>「明晰的分层结构:」</strong> 可以轻松的定义文档树,并自动化链接同级/父级/下级文章</p></li>
+<li><p><strong>「美观的自动索引:」</strong> 可自动生成美观的模块索引</p></li>
+<li><p><strong>「精确的语法高亮:」</strong> 基于 Pygments 自动生成语法高亮</p></li>
+<li><p><strong>「开放的扩展:」</strong> 支持代码块的自动测试,并包含Python模块的自述文档(API docs)等</p></li>
+<li><p>Sphinx 使用 reStructuredText 作为标记语言, 可以享有Docutils为reStructuredText提供的分析，转换等多种工具.</p></li>
+</ol>
+<p>——引用自知乎：<a class="reference external" href="https://zhuanlan.zhihu.com/p/143141024">Sphinx和rst在科研笔记和学术博客中的高效用法</a></p>
+</div></blockquote>
+</section>
+<section id="latex">
+<h2>5. Latex<a class="headerlink" href="#latex" title="永久链接至标题"></a></h2>
+<p>放心，你是逃不了Latex的。。。更多Latex实例请看《使用reStructuredText 编写大纲》。</p>
+<p><a class="reference external" href="https://www.cnblogs.com/1024th/p/11623258.html">LaTeX公式手册(全网最全) </a></p>
+<p><a class="reference external" href="https://blog.csdn.net/happyday_d/article/details/83715440">Typora中利用LaTeX 插入数学公式</a></p>
+<p>$$
+H(s)=\frac{Y(s)}{X(s)}=\dot{A_u}=\frac{\dot{U_o}}{\dot{U_i}}
+$$</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="教程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="%E4%BD%BF%E7%94%A8reStructuredText%E7%BC%96%E5%86%99%E5%A4%A7%E7%BA%B2.html" class="btn btn-neutral float-right" title="使用reStructuredText 编写大纲" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2022, UJN12J316实验室.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

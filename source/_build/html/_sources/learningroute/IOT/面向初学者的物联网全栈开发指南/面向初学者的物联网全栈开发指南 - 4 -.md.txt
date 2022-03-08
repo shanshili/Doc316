@@ -1,0 +1,118 @@
+# 面向初学者的物联网全栈开发指南 - 4 - 硬件侧上云
+
+在本章，我们仍采用分布调试的思想，先通过上一章认识到的MQTT协议使用ESP8266连接至IOT平台，再使用MCU通过AT串口指令控制ESP8266。
+
+## 1. 准备工具
+
++ 串口调试助手
++ ESP-01转接板（可选）
++ ESP8266AT指令集 、ESP8266AT指令使用示例 （[ESP8266文档中心 | 安信可科技 (ai-thinker.com)](https://docs.ai-thinker.com/esp8266/docs)）
++ 快速上云工具（自制小工具，百度网盘：链接：https://pan.baidu.com/s/1rOJRhyrP0kcqkHrM50a_Iw  提取码：1ptt ）
++ 网络调试助手（官方链接：[NetAssist网络调试助手 V5.0.2-软件工具-野人家园 (cmsoft.cn)](http://www.cmsoft.cn/resource/102.html)）
+
+## 2. ESP8266透传
+
+在第二章中介绍了ESP8266的初始化流程，现在我们的ESP8266已经连接到WIFI热点，接下来需要连接上一章开通的IOT平台服务器，并发送相应的MQTT协议数据。此部分可以参考【ESP8266AT指令使用示例 - 4.1 TCP Client 单连接透传】，建议先使用串口调试助手从PC机上发送相应AT指令和协议数据来调试ESP8266，第三节会介绍通过MCU控制。
+
+1. AT+CIPSTART="TCP","\$IOT平台IP",\$端口
+
+   首先通过CIPSTART连接服务器IP，使用TCP连接，最后为端口名，对于阿里云IOT，端口固定为1883
+
+2. AT+CIPMODE=1
+
+   使能透传模式，透传即透明传输，也即在CIPSEND之后，ESP8266串口收到的所有数据将同步传输到刚刚连接到服务器。
+
+3. AT+CIPSEND
+
+   开始透传，所有串口信息将发送至服务器。
+
+4. \+++
+
+   结束透传，此条指令不需要换行。
+
+5. AT+CIPMODE=0
+
+   失能透传。
+
+6. AT+CIPCLOSE
+
+   断开TCP连接，断开之后需重新发送CONNECT报文。
+
+使用ESP8266建立上行链路的流程如下，发送的具体信息在上一章中有所介绍，我们在下一节通过MCU的控制代码来进一步理解。
+
+![消息发送](https://gitee.com/FZR95/pic316/raw/master/%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81.png)
+
+接下来我们再来看看消息的下行链路，通过上一章的网络调试助手可以看到，在连接IOT云平台后，响应消息和云平台指令将直接下达到ESP8266，但MCU需要处理信息，也不能及时响应串口信息，否则很可能会导致任务冲突，因此我们先让ESP8266保存云平台发过来的数据。
+
+1. AT+CIPRECVMODE=1
+
+   被动模式，在收到云平台消息后，ESP8266会向串口发送本次收到的数据长度（注意不一定是缓存数据的总长度），而不是完整的数据，大大减小了MCU需要响应的串口信息。
+
+2. AT+CIPRECVLEN
+
+   查询ESP8266缓存长度，可以此长度读取ESP8266缓存的数据。
+
+3. AT+CIPRECVDATA=\<LENGTH>
+
+   读取指定长度的缓存数据，\<LENGTH>可以为刚刚通过RECVLEN查询到的数据长度。
+
+![消息接收](https://gitee.com/FZR95/pic316/raw/master/%E6%B6%88%E6%81%AF%E6%8E%A5%E6%94%B6.png)
+
+## 3. MCU控制
+
+按照上一节介绍的AT指令，控制MCU通过串口发送：
+
+```c
+// Connect to IOT platform
+void ESP8266_IOT(void)
+{
+    printf("AT+CIPSTART=\"TCP\",\"$替换为ProductKey.iot-as-mqtt.cn-shanghai.aliyuncs.com\",1883\r\n");
+    delay_ms(1000);
+    delay_ms(1000);
+    delay_ms(1000);
+    printf("AT+CIPRECVMODE=1\r\n");
+    delay_ms(100);
+    Esp8266_Send(Product_Connect, 116);  \\ Product_Connect为MQTT CONNECT报文
+}
+
+// Pass-through MSGs to IOT platform
+void Esp8266_Send(unsigned char *arr, unsigned int length)
+{
+    unsigned int i = 0;
+    printf("AT+CIPMODE=1\r\n");
+    delay_ms(500);
+    printf("AT+CIPSEND\r\n");
+    delay_ms(500);
+    // 此段为STM32程序，功能是使用串口发送指定数量的数组字节
+    while (i < length)
+    {
+        while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)
+            ;
+        USART_SendData(USART1, arr[i++]);
+    }
+    delay_ms(40);
+    printf("+++");
+    delay_ms(1200);
+    printf("AT+CIPMODE=0\r\n");
+    delay_ms(500);
+}
+
+// Ping to IOT platform
+void Esp8266_Ping(void)
+{
+    unsigned char Ping[2] = {0xC0, 0x00};
+    Esp8266_Send(Ping, 2);
+}
+
+// Disconnect to IOT platform
+void Esp8266_Disconnect(void)
+{
+    unsigned char Disconnect[2] = {0xE0, 0x00};
+    Esp8266_Send(Disconnect, 2);
+    printf("AT+CIPCLOSE\r\n");
+    delay_ms(100);
+}
+```
+
+上面的函数中，MQTT数据通过ESP8266_Send函数发送，其中CONNECT信息对于每个设备来说是固定的，因此直接定义成一个数组，直接发送即可。
+

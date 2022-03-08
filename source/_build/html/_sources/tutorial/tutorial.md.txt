@@ -4,7 +4,7 @@
 
 **此节将介绍Doc316所使用的架构，如果只想编写大纲的同学可以跳过此节。**
 
-Doc316由基于python的Sphinx构建，其原生支持的文档为 reStructuredText 即.rst格式文件。但Markdown在日常生活中使用更加普遍，因此为了使Sphinx支持Markdown，添加了MyST-Parser插件。本篇介绍使用Markdown编写。
+Doc316由基于python的Sphinx构建，其原生支持的文档为 reStructuredText 即.rst格式文件。但Markdown在日常生活中使用更加普遍，因此为了使Sphinx支持Markdown，添加了recommonmark插件。本篇介绍使用Markdown编写。但插件对于Markdown的支持还是有限，比如格式要求严格，无法支持Latex等，如果不是上传之前写好的Markdown，或者纯文本文件，否则不推荐使用Markdown编写大纲。
 
 Doc316工程存储在Github上，每次更改完成后，由本地commit并push到[Github仓库](https://github.com/FZR95/Doc316.git)。后续将建立起基于Github的合作构建。
 
@@ -64,8 +64,6 @@ Doc316内的大纲使用Markdown进行编写。你可以在网页右上角点击
 
 [Typora中利用LaTeX 插入数学公式](https://blog.csdn.net/happyday_d/article/details/83715440)
 
-
 $$
 H(s)=\frac{Y(s)}{X(s)}=\dot{A_u}=\frac{\dot{U_o}}{\dot{U_i}}
 $$
-
