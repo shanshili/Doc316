@@ -4,7 +4,8 @@
 
 **此节将介绍Doc316所使用的架构，如果只想编写大纲的同学可以跳过此节。**
 
-Doc316由基于python的Sphinx构建，其原生支持的文档为 reStructuredText 即.rst格式文件。但Markdown在日常生活中使用更加普遍，因此为了使Sphinx支持Markdown，添加了MyST-Parser插件。本篇介绍使用Markdown编写。
+Doc316由基于python的Sphinx构建，其原生支持的文档为 reStructuredText
+即.rst格式文件。但Markdown在日常生活中使用更加普遍，因此为了使Sphinx支持Markdown，添加了MyST-Parser插件。本篇介绍使用Markdown编写。
 
 Doc316工程存储在Github上，每次更改完成后，由本地commit并push到[Github仓库](https://github.com/FZR95/Doc316.git)。后续将建立起基于Github的合作构建。
 
@@ -14,11 +15,9 @@ Doc316使用Read the Docs进行托管，将Github仓库import到该网站，并�
 
 + [Read the Docs 从懵逼到入门](http://t.csdn.cn/t1Tlw)
 
-## 2.使用Markdown编写
+## 2.【推荐】使用Markdown编写
 
-***尽管本大纲架构已经添加了对于Markdown文件的支持，但并不支持其中的Latex（实际上Markdown本身并不要求支持Latex，但很多地方贴心地提供了支持）！因此如果有Latex，不推荐使用Markdown。本教程是纯文本结构，也是为了推荐大家在日常其他地方使用Markdown，因此使用了Markdown提供参考。***
-Markdown易于编写且不依赖Python解释器及相关环境，因此推荐大家使用Markdown编写大纲。
-Doc316内的大纲使用Markdown进行编写。你可以在网页右上角点击“ Edit on GitHub”查看构成本页的.md文件。
+Markdown易于编写且不依赖Python解释器及相关环境，因此推荐大家使用Markdown编写大纲。 Doc316内的大纲使用Markdown进行编写。你可以在网页右上角点击“ Edit on GitHub”查看构成本页的.md文件。
 
 > markdown不止是HTML的简化版，更重要的是txt的升级版、word的轻量版、笔记的最佳载体。
 > 作为一种简单的格式标记语言，不同于txt的无格式，不同于HTML的复杂标记，也不同于word的鼠标调整样式。markdown通过简单的几个字符键入，就可以快捷的定义文档的样式。
@@ -40,7 +39,7 @@ Doc316内的大纲使用Markdown进行编写。你可以在网页右上角点击
 
 使用Typora时，在偏好设置-图像中设置插入图片时自动复制到.asset文件夹，设置上传服务为PicGo，回到文档中，在图片上点击右键，上传图片，本地图片会自动替换为图床链接。
 
-## 4. 使用reStructuredText 编写
+## 4.【较复杂】使用reStructuredText 编写
 
 使用reStructuredText编写大纲时，需要配置Python解释器及相关环境，具体实例请看《使用reStructuredText 编写大纲》。
 
@@ -58,14 +57,15 @@ Doc316内的大纲使用Markdown进行编写。你可以在网页右上角点击
 
 ## 5. Latex
 
-放心，你是逃不了Latex的。。。更多Latex实例请看《使用reStructuredText 编写大纲》。
+放心，你是逃不了Latex的。。。
 
 [LaTeX公式手册(全网最全) ](https://www.cnblogs.com/1024th/p/11623258.html)
 
 [Typora中利用LaTeX 插入数学公式](https://blog.csdn.net/happyday_d/article/details/83715440)
 
-
-$$
-H(s)=\frac{Y(s)}{X(s)}=\dot{A_u}=\frac{\dot{U_o}}{\dot{U_i}}
-$$
+Latex示例（通过源码查看）：
+1. 内联Latex：$a^2+b^2=c^2$
+2. Latex块：
+    
+  $$ H(s)=\frac{Y(s)}{X(s)}=\dot{A_u}=\frac{\dot{U_o}}{\dot{U_i}} $$
 

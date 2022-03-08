@@ -24,7 +24,6 @@ author = 'FZR'
 # The full version, including alpha/beta/rc tags
 release = 'v0.1'
 
-
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
@@ -32,6 +31,9 @@ release = 'v0.1'
 # ones.
 extensions = [
     'myst_parser'
+]
+myst_enable_extensions = [
+    "dollarmath"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -48,7 +50,6 @@ language = 'zh_CN'
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
-
 
 # -- Options for HTML output -------------------------------------------------
 
