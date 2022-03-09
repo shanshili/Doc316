@@ -5,4 +5,3 @@
     :maxdepth: 2
 
     IOT/index
-    滤波器/index

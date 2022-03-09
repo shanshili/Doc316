@@ -1,7 +1,8 @@
-项目
+关于
 ==================================
 
 .. toctree::
     :maxdepth: 2
 
-    基于卡尔曼滤波器的电子秤/index
+    about
+    revision

@@ -73,3 +73,4 @@ Latex示例（通过源码查看）：
     
   $$ H(s)=\frac{Y(s)}{X(s)}=\dot{A_u}=\frac{\dot{U_o}}{\dot{U_i}} $$
 
+跟多Latex示例可以看滤波器板块。
