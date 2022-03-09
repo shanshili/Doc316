@@ -6,4 +6,5 @@
 查看、预约课程；
 提问、浏览答复；
 体验物联网实验室。
-<img src='https://raw.githubusercontent.com/FZR95/Pic316/main/QQ%E5%9B%BE%E7%89%8720220307210108.png' width="30%" />
+
+<img src='https://gitee.com/FZR95/pic316/raw/master/QQ图片20220307210108.png' width="30%" />
