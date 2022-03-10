@@ -22,7 +22,7 @@ copyright = '2022, UJN12J316实验室'
 author = 'FZR'
 
 # The full version, including alpha/beta/rc tags
-release = 'v0.1'
+release = 'v0.2'
 
 # -- General configuration ---------------------------------------------------
 
