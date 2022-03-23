@@ -11,10 +11,9 @@
 
    learningroute/index
    projects/index
-   tutorial/index
    tricks/index
    resource/index
-
+   tutorial/index
    about/index
 
 
