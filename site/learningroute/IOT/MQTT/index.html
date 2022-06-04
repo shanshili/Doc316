@@ -1,0 +1,984 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/learningroute/IOT/MQTT/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.0">
+    
+    
+      
+        <title>MQTT 3.1.1 协议 - DOC316</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fd896c8a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mqtt-311" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="DOC316" class="md-header__button md-logo" aria-label="DOC316" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DOC316
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MQTT 3.1.1 协议
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DOC316" class="md-nav__button md-logo" aria-label="DOC316" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    DOC316
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          学习路径
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="学习路径" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          学习路径
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        IOT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9F%BA%E4%BA%8E%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E7%94%B5%E5%AD%90%E7%A7%A4/" class="md-nav__link">
+        基于卡尔曼滤波器的电子秤
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          知识技巧
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="知识技巧" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          知识技巧
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/MLSA/" class="md-nav__link">
+        MLSA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+        滤波器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/PID/pid/" class="md-nav__link">
+        PID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/" class="md-nav__link">
+        无线定位技术
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          资源列表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="资源列表" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          资源列表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resource/resource/" class="md-nav__link">
+        软件资源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resource/link/" class="md-nav__link">
+        网站资源
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/tutorial/" class="md-nav__link">
+        参与编辑
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          关于
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/revision/" class="md-nav__link">
+        修订记录
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#connack" class="md-nav__link">
+    确认连接 CONNACK
+  </a>
+  
+    <nav class="md-nav" aria-label="确认连接 CONNACK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    固定报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    可变报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    载荷
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    应答 - 服务端
+  </a>
+  
+    <nav class="md-nav" aria-label="应答 - 服务端">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publish-0" class="md-nav__link">
+    发布消息 PUBLISH (等级0)
+  </a>
+  
+    <nav class="md-nav" aria-label="发布消息 PUBLISH (等级0)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    固定报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    可变报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    载荷
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publish-1" class="md-nav__link">
+    发布消息 PUBLISH (等级1)
+  </a>
+  
+    <nav class="md-nav" aria-label="发布消息 PUBLISH (等级1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    固定报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    可变报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    载荷
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-_1" class="md-nav__link">
+    响应 - 服务端
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    失败响应
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subscribe" class="md-nav__link">
+    订阅 SUBSCRIBE
+  </a>
+  
+    <nav class="md-nav" aria-label="订阅 SUBSCRIBE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    固定报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    可变报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    载荷
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subscribe_1" class="md-nav__link">
+    订阅确认 SUBSCRIBE
+  </a>
+  
+    <nav class="md-nav" aria-label="订阅确认 SUBSCRIBE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    固定报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    可变报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    载荷
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unsubscribe" class="md-nav__link">
+    取消订阅 UNSUBSCRIBE
+  </a>
+  
+    <nav class="md-nav" aria-label="取消订阅 UNSUBSCRIBE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    固定报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    可变报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    载荷
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subscribe_2" class="md-nav__link">
+    取消订阅确认 SUBSCRIBE
+  </a>
+  
+    <nav class="md-nav" aria-label="取消订阅确认 SUBSCRIBE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    固定报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    可变报头
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ping" class="md-nav__link">
+    确认存活 PING
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disconnect" class="md-nav__link">
+    断开 DISCONNECT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    消息获取
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="mqtt-311">MQTT 3.1.1 协议</h1>
+<h2 id="connack">确认连接 CONNACK</h2>
+<h3 id="_1">固定报头</h3>
+<p><strong>固定位</strong> 10</p>
+<p><strong>剩余长度字段</strong> 固定报头之后的所有字段长度（16进制） XX</p>
+<h3 id="_2">可变报头</h3>
+<p><strong>协议名</strong> 00 04 4D 51 54 54</p>
+<p><strong>协议版本</strong> 04</p>
+<p><strong>连接标志</strong> C2 </p>
+<p><strong>KeepAlive时长</strong> 00 64 (100秒)</p>
+<h3 id="_3">载荷</h3>
+<p>长度 + HEX内容</p>
+<p><strong>mqttclientId</strong> xx xx CONTENT={${clientId}|securemode=3,signmethod=hmacsha1|}</p>
+<p><strong>mqttUsername</strong> xx xx CONTENT={￥{DeviceName}&amp;￥{ProductKey}}</p>
+<p><strong>mqttPassword </strong> xx xx CONTENT={clientId￥{clientId}deviceName￥{devicename}productKey￥{productKey}}，通过DeviceSecret进行hmacsha1加密 地址：http://encode.chahuo.com/</p>
+<h3 id="-">应答 - 服务端</h3>
+<p>20 02 00 00</p>
+<h4 id="_4"><em>示例</em></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;ProductKey&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;a1ji0qFv6Jf&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;DeviceName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STC15&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;DeviceSecret&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bc0834e2beeb03d37eeb7361cc387918&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>得到阿里云IOT三元组产品信息后，转换为MQTT连接参数，假设clientId为10001</p>
+<blockquote>
+<p>mqttclientId = 10001|securemode=3,signmethod=hmacsha1|</p>
+<p>mqttUsername = STC15&amp;a1ji0qFv6Jf</p>
+<p>mqttPassword = clientId10001deviceNameSTC15productKeya1ji0qFv6Jf</p>
+<p>mqttPassword(hmacsha1) = 4756856f5bc65bbbabc7a826d73de282ff87090d</p>
+</blockquote>
+<p>10 70 00 04 4D 51 54 54 04 C2 00 64 00 27 31 30 30 30 31 7C 73 65 63 75 72 65 6D 6F 64 65 3D 33 2C 73 69 67 6E 6D 65 74 68 6F 64 3D 68 6D 61 63 73 68 61 31 7C 00 11 53 54 43 31 35 26 61 31 6A 69 30 71 46 76 36 4A 66 00 28 34 37 35 36 38 35 36 66 35 62 63 36 35 62 62 62 61 62 63 37 61 38 32 36 64 37 33 64 65 32 38 32 66 66 38 37 30 39 30 64</p>
+<p>应答为 20 02 00 00</p>
+<p><strong>注意剩余长度超过128后：</strong> <length> + <length/128> </p>
+<h2 id="publish-0">发布消息 PUBLISH (等级0)</h2>
+<h3 id="_5">固定报头</h3>
+<p><strong>固定位</strong> 30</p>
+<p><strong>剩余长度字段</strong> 固定报头之后的所有字段长度（16进制） XX</p>
+<h3 id="_6">可变报头</h3>
+<p><strong>TOPIC</strong> xx xx CONTENT</p>
+<h3 id="_7">载荷</h3>
+<p>CONTENT(无需长度)</p>
+<h3 id="_8">示例</h3>
+<p>TOPIC: /sys/a1ji0qFv6Jf/STC15/thing/event/property/post</p>
+<p>PayLoad: {"id":"15","version":"1.0","params":{"Temp": 02,"Hum": 02,"Gas": 02},"method":"thing.event.property.set"}</p>
+<p>30 98 01 00 30 2F 73 79 73 2F 61 31 6A 69 30 71 46 76 36 4A 66 2F 53 54 43 31 35 2F 74 68 69 6E 67 2F 65 76 65 6E 74 2F 70 72 6F 70 65 72 74 79 2F 70 6F 73 74 7B 22 69 64 22 3A 22 31 37 22 2C 22 76 65 72 73 69 6F 6E 22 3A 22 31 2E 30 22 2C 22 70 61 72 61 6D 73 22 3A 7B 22 54 65 6D 70 22 3A 20 36 2C 22 48 75 6D 22 3A 20 36 2C 22 47 61 73 22 3A 20 36 7D 2C 22 6D 65 74 68 6F 64 22 3A 22 74 68 69 6E 67 2E 65 76 65 6E 74 2E 70 72 6F 70 65 72 74 79 2E 73 65 74 22 7D</p>
+<h2 id="publish-1">发布消息 PUBLISH (等级1)</h2>
+<h3 id="_9">固定报头</h3>
+<p><strong>固定位</strong> 32</p>
+<p><strong>剩余长度字段</strong> 固定报头之后的所有字段长度（16进制） XX</p>
+<h3 id="_10">可变报头</h3>
+<p><strong>TOPIC</strong> xx xx CONTENT</p>
+<p><strong>报文标识符</strong> 00 iD</p>
+<h3 id="_11">载荷</h3>
+<p>CONTENT(无需长度)</p>
+<h3 id="-_1">响应 - 服务端</h3>
+<p>40 02 00 iD</p>
+<h3 id="_12">失败响应</h3>
+<p>第一位不是40，下次发布固定报头固定位为3A</p>
+<h3 id="_13"><em>示例</em></h3>
+<blockquote>
+<p>/a1ji0qFv6Jf/STC15/user/temp</p>
+</blockquote>
+<p>32 29 00 1C 2F 61 31 6A 69 30 71 46 76 36 4A 66 2F 53 54 43 31 35 2F 75 73 65 72 2F 74 65 6D 70+CONTENT</p>
+<h2 id="subscribe">订阅 SUBSCRIBE</h2>
+<h3 id="_14">固定报头</h3>
+<p><strong>固定位</strong> 82</p>
+<p><strong>剩余长度字段</strong> 固定报头之后的所有字段长度（16进制） XX</p>
+<h3 id="_15">可变报头</h3>
+<p>00 0A</p>
+<h3 id="_16">载荷</h3>
+<p>TOPIC长度 + TOPIC内容HEX</p>
+<p><strong>TOPIC</strong> xx xx </p>
+<p><strong>QoS</strong> 服务质量等级 00 - 无需认证 01 - 认证一次 02 - 至少认证一次</p>
+<h2 id="subscribe_1">订阅确认 SUBSCRIBE</h2>
+<h3 id="_17">固定报头</h3>
+<p><strong>固定位</strong> 90</p>
+<p><strong>剩余长度字段</strong> 固定报头之后的所有字段长度（16进制） 03</p>
+<h3 id="_18">可变报头</h3>
+<p>00 XX（ID）</p>
+<h3 id="_19">载荷</h3>
+<p><strong>成功</strong> 服务质量等级 00 - 无需认证 01 - 认证一次 02 - 至少认证一次 （阿里云只回01）</p>
+<p><strong>失败</strong> 08</p>
+<h2 id="unsubscribe">取消订阅 UNSUBSCRIBE</h2>
+<h3 id="_20">固定报头</h3>
+<p><strong>固定位</strong> A2</p>
+<p><strong>剩余长度字段</strong> 固定报头之后的所有字段长度（16进制） XX</p>
+<h3 id="_21">可变报头</h3>
+<p>00 0A</p>
+<h3 id="_22">载荷</h3>
+<p>TOPIC长度 + TOPIC内容HEX</p>
+<p><strong>TOPIC</strong> xx xx </p>
+<h2 id="subscribe_2">取消订阅确认 SUBSCRIBE</h2>
+<h3 id="_23">固定报头</h3>
+<p><strong>固定位</strong> B0</p>
+<p><strong>剩余长度字段</strong> 固定报头之后的所有字段长度（16进制） 02</p>
+<h3 id="_24">可变报头</h3>
+<p>00 XX（ID）</p>
+<h2 id="ping">确认存活 PING</h2>
+<p>C0 00</p>
+<p><strong>响应</strong> D0 00</p>
+<h2 id="disconnect">断开 DISCONNECT</h2>
+<p>E0 00</p>
+<h2 id="_25">消息获取</h2>
+<p>TOPIC： sys/a1ji0qFv6Jf/STC15/thing/event/property/post</p>
+<p>PayLoad： {"method":"thing.service.property.set","id":"934414241","params":{"Light":1},"version":"1.0.0"}</p>
+<p>30 92 01 </p>
+<p>00 31 2F 73 79 73 2F 61 31 6A 69 30 71 46 76 36 4A 66 2F 53 54 43 31 35 2F 74 68 69 6E 67 2F 73 65 72 76 69 63 65 2F 70 72 6F 70 65 72 74 79 2F 73 65 74 </p>
+<p>7B 22 6D 65 74 68 6F 64 22 3A 22 74 68 69 6E 67 2E 73 65 72 76 69 63 65 2E 70 72 6F 70 65 72 74 79 2E 73 65 74 22 2C 22 69 64 22 3A 22 39 33 34 34 31 34 32 34 31 22 2C 22 70 61 72 61 6D 73 22 3A 7B 22 4C 69 67 68 74 22 3A 31 7D 2C 22 76 65 72 73 69 6F 6E 22 3A 22 31 2E 30 2E 30 22 7D </p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.0f659f14.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

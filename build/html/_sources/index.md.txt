@@ -1,6 +1,0 @@
-# 欢迎来到DOC316
-本文档使用MarkDown编写
-## Title1
-## Title2
-## Title3
-# 

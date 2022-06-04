@@ -3,23 +3,8 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
-      <excludeFolder url="file://$MODULE_DIR$/build/doctrees/learningroute" />
-      <excludeFolder url="file://$MODULE_DIR$/build/doctrees/tutorial" />
-      <excludeFolder url="file://$MODULE_DIR$/build/html/.doctrees/learningroute" />
-      <excludeFolder url="file://$MODULE_DIR$/build/html/.doctrees/resource" />
-      <excludeFolder url="file://$MODULE_DIR$/build/html/.doctrees/tutorial" />
-      <excludeFolder url="file://$MODULE_DIR$/build/html/_sources/learningroute" />
-      <excludeFolder url="file://$MODULE_DIR$/build/html/_sources/resource" />
-      <excludeFolder url="file://$MODULE_DIR$/build/html/_sources/tutorial" />
-      <excludeFolder url="file://$MODULE_DIR$/build/html/learningroute" />
-      <excludeFolder url="file://$MODULE_DIR$/build/html/resource" />
-      <excludeFolder url="file://$MODULE_DIR$/build/html/tutorial" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.8 (Doc316)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.8 (DOC316)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-  </component>
-  <component name="PyDocumentationSettings">
-    <option name="format" value="PLAIN" />
-    <option name="myDocStringFormat" value="Plain" />
   </component>
 </module>

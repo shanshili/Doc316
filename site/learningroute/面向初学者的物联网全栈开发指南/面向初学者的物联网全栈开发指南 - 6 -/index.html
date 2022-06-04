@@ -1,0 +1,779 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/learningroute/%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%20-%206%20-/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.0">
+    
+    
+      
+        <title>面向初学者的物联网全栈开发指南 - 6 - uni-app起步 - DOC316</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fd896c8a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#-6-uni-app" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="DOC316" class="md-header__button md-logo" aria-label="DOC316" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DOC316
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              面向初学者的物联网全栈开发指南 - 6 - uni-app起步
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DOC316" class="md-nav__button md-logo" aria-label="DOC316" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    DOC316
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          学习路径
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="学习路径" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          学习路径
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IOT/" class="md-nav__link">
+        IOT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9F%BA%E4%BA%8E%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E7%94%B5%E5%AD%90%E7%A7%A4/" class="md-nav__link">
+        基于卡尔曼滤波器的电子秤
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          知识技巧
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="知识技巧" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          知识技巧
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/MLSA/" class="md-nav__link">
+        MLSA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+        滤波器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/PID/pid/" class="md-nav__link">
+        PID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/" class="md-nav__link">
+        无线定位技术
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          资源列表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="资源列表" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          资源列表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resource/resource/" class="md-nav__link">
+        软件资源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resource/link/" class="md-nav__link">
+        网站资源
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/tutorial/" class="md-nav__link">
+        参与编辑
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          关于
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/revision/" class="md-nav__link">
+        修订记录
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 准备工具
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 项目结构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 页面结构
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 页面结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 大体介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-html" class="md-nav__link">
+    3.2 HTML变量引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 云函数的调用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33_1" class="md-nav__link">
+    3.3 一个示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="-6-uni-app">面向初学者的物联网全栈开发指南 - 6 - uni-app起步</h1>
+<p>最后，我们要构建一个uni-app，并调用云函数建立起属于自己的全平台客户端，这里只对uni-app做一个简单的介绍，Html，CSS，JS上手比较快，而uni-app在Vue.js的基础上封装了大量的函数，用起来非常方便。</p>
+<h2 id="1">1. 准备工具</h2>
+<ul>
+<li>HBuilderX (<a href="https://www.dcloud.io/hbuilderx.html">HBuilderX-高效极客技巧 (dcloud.io)</a>)</li>
+<li>uni-app官方文档：<a href="https://uniapp.dcloud.io/README">什么是 uni-app - uni-app官网 (dcloud.io)</a></li>
+</ul>
+<h2 id="2">2. 项目结构</h2>
+<p>还是在上一章建立的uni-app中，直接在顶部选择运行，运行到浏览器即可看到当前的项目。uni-app为跨平台项目，运行到浏览器，项目将被编译为H5；运行到小程序模拟器，项目将被编译为对应的小程序；运行到手机或模拟器，项目将被编译为对应的应用程序。</p>
+<p><img alt="image-20210827183207888" src="https://gitee.com/FZR95/pic316/raw/master/image-20210827183207888.png" /></p>
+<p>更细致的项目结构请参照文档，在这里只说常用的：</p>
+<ul>
+<li>pages：在这里右键可以新建页面，页面为.vue格式，一般放置在与页面名相同的文件夹下，index.vue默认为我们的主页（启动页）。</li>
+<li>
+<p>pages.json：可以配置启动页、页面样式、导航栏等。<a href="https://uniapp.dcloud.io/collocation/pages">pages.json - uni-app官网 (dcloud.io)</a></p>
+</li>
+<li>
+<p>static：这里存放所有的静态文件，如示例中的图片。</p>
+</li>
+<li>manifest.json：项目配置页面。</li>
+</ul>
+<h2 id="3">3. 页面结构</h2>
+<p>我们打开index.vue，这是这个项目的启动页，他由HTML(\<template>)、JavaScript(\<script>)和CSS(\<style>)构成。</p>
+<h3 id="31">3.1 大体介绍</h3>
+<ul>
+<li>HTML</li>
+</ul>
+<p>HTML部分非常简单，注意\<template>下只能有一个容器\<view>存在，里面再包裹页面的所有元素，可以看到里面有一个图片元素\<image>和\<view>包裹的文字元素\<text>。<a href="https://www.runoob.com/html/html-tutorial.html">HTML 教程 | 菜鸟教程 (runoob.com)</a></p>
+<ul>
+<li>JS</li>
+</ul>
+<p>uni-app基于Vue，因此这一部分与Vue一致，</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="c1">// 此处存放页面声明的变量</span><span class="w"></span>
+<span class="w">                </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Hello&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nx">onLoad</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// 页面在加载时需要执行的函数和任务 </span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// 页面声明的函数</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><a href="https://www.runoob.com/js/js-tutorial.html">JavaScript 教程 | 菜鸟教程 (runoob.com)</a></p>
+<p><a href="https://cn.vuejs.org/v2/guide/">介绍 — Vue.js (vuejs.org)</a></p>
+<ul>
+<li>CSS</li>
+</ul>
+<p>此部分请参考教程。<a href="https://www.runoob.com/css/css-tutorial.html">CSS 教程 | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="32-html">3.2 HTML变量引用</h3>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;content&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">image</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;logo&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/static/logo.png&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">image</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-area&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">text</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>{{title}}<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>在HTML部分，可以看到文本元素内存在一个{{title}}，像两个大括号“{{}}”这样的形式是用来引用JS中data部分声明的页面变量的，在JS中，可以看到声明了一个title变量，title为字符串类型，值为‘hello'，因此在编译后，原本的“{{title}}”会变为title的值，也即hello。</p>
+<h3 id="33">3.3 云函数的调用</h3>
+<p>下面我们在JS中methods部分声明一个函数，来调用云函数，并将云函数的返回值打印到控制台。</p>
+<p>首先在使用其他浏览器通过本项目调用云函数访问其他服务器时，要配置跨域配置，进入<a href="https://unicloud.dcloud.net.cn/home">服务空间 - uniCloud (dcloud.net.cn)</a>，选择项目所在的服务空间，左边栏选择跨域配置，添加域名“iot.cn-shanghai.aliyuncs.com”即可。</p>
+<p>先把JS部分添加一个函数IOT_QueryDevice()，通过封装好的函数uniCloud.callFunction()来调用上一章我们创建的名为“QueryDevice”的云函数，使用callback方法，函数调用成功后执行success内的任务，即打印云函数的返回值。<a href="https://uniapp.dcloud.net.cn/uniCloud/cf-functions?id=clientcallfunction">开发云函数 - uni-app官网 (dcloud.net.cn)</a></p>
+<p>但是目前这个函数生命好后还没有被页面调用，因此我们在页面加载时执行此函数，也即在onLoad()里调用，这里要特别注意，在Vue.js中，要调用所有在methods中声明的函数和在data中声明的变量，需要为this.xxx的格式，同时要注意在callback异步中的调用方法（即你所使用的封装好的函数使用callback方法，success中的调用）还有所不同，下一节会提到</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Devices</span><span class="w"> </span><span class="o">:</span><span class="p">[]</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nx">onLoad</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">IOT_QueryDevice</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">IOT_QueryDevice</span><span class="p">(){</span><span class="w"></span>
+<span class="w">                </span><span class="nx">uniCloud</span><span class="p">.</span><span class="nx">callFunction</span><span class="p">({</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;QueryDevice&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">})</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>在控制台中，我们看到了云函数返回的数据(result.Data)，</p>
+<p><img alt="image-20210827212108809" src="https://gitee.com/FZR95/pic316/raw/master/image-20210827212108809.png" /></p>
+<p>下面我们只取得数组元素DeviceInfo部分即可，也就是</p>
+<div class="highlight"><pre><span></span><code>        success: (res) =&gt; {
+            console.log(res.result.DeviceInfo)
+        }
+</code></pre></div>
+<p><img alt="image-20210827212323623" src="https://gitee.com/FZR95/pic316/raw/master/image-20210827212323623.png" /></p>
+<p>产品下只有一个设备，所以返回的数组长度为1，第0个元素即我们设备1的详细信息。</p>
+<h3 id="33_1">3.3 一个示例</h3>
+<p>现在构建一个页面显示产品下所有设备的名字和在线状态，我回到物联网平台多创建了两个设备，通过物联网平台的设备模拟器将他们激活。刷新H5页面，可以看到现在控制台打印出了三个设备，其中device3通过设备模拟器启动，为在线状态。</p>
+<p><img alt="image-20210827212847830" src="https://gitee.com/FZR95/pic316/raw/master/image-20210827212847830.png" /></p>
+<p>现在将这个数组赋值到JS中data声明的一个名为Devices的数组里，这里我们提到了刚才的异步调用问题，申明that=this，并在异步函数中改this为that即可。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">Devices</span><span class="w"> </span><span class="o">:</span><span class="p">[]</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nx">onLoad</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">IOT_QueryDevice</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">IOT_QueryDevice</span><span class="p">(){</span><span class="w"></span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="nx">uniCloud</span><span class="p">.</span><span class="nx">callFunction</span><span class="p">({</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;QueryDevice&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">DeviceInfo</span><span class="p">)</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">that</span><span class="p">.</span><span class="nx">Devices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">DeviceInfo</span><span class="p">;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">})</span><span class="w"></span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Devices</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>下面在HTML中需要使用Vue的V-for函数，他就是一个便利，将数组中所有元素遍历。v-for的推荐格式如下，其中括号里的item为数组中所遍历到的当前元素替代名，比如我们要引用arr[i].name，遍历到arr[i]元素后，其可替代为item，index为刚才的“i”，为遍历到的元素序号，”in“后面跟的是你需要遍历的数组。最后别忘绑定一个:key。<a href="https://cn.vuejs.org/v2/guide/#条件与循环">介绍 — Vue.js (vuejs.org)</a></p>
+<p>通过刚才控制台的日志，我们知道了返回数据的结构，设备名应该为res.result.DeviceInfo[i].DeviceName，我们将DeviceInfo赋值到Devices，又通过v-for便利元素，因此页面变量调用这里直接写{{item.DeviceName}}即可。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;content&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">view</span> <span class="na">v-for</span><span class="o">=</span><span class="s">&quot;(item, index) in Devices&quot;</span> <span class="na">:key</span><span class="o">=</span><span class="s">&quot;index&quot;</span><span class="p">&gt;</span>
+            DeviceName:{{item.DeviceName}} , DeviceStatus  : {{item.DeviceStatus}}
+        <span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>结果展示如图。</p>
+<p><img alt="image-20210827213910743" src="https://gitee.com/FZR95/pic316/raw/master/image-20210827213910743.png" /></p>
+<p>至此，从MCU+ESP8266的硬件侧，到IOT云平台+uniCloud的服务侧，再到基于uni-app的跨平台客户端，整个物联网流程讲解完毕，大家可以消化吸收，通过文章给出的大量链接自行拓展学习。整个专栏六篇文章用了两天的时间写完，时间比较紧，如有错误和遗漏，请多多见谅，也请及时批评指出，多多交流。</p>
+<p>祝您在物联网的路上旅途愉快！</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.0f659f14.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

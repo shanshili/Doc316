@@ -1,0 +1,1249 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/tricks/%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.0">
+    
+    
+      
+        <title>无线定位技术 - DOC316</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fd896c8a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="DOC316" class="md-header__button md-logo" aria-label="DOC316" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DOC316
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              无线定位技术
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DOC316" class="md-nav__button md-logo" aria-label="DOC316" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    DOC316
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          学习路径
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="学习路径" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          学习路径
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learningroute/IOT/" class="md-nav__link">
+        IOT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learningroute/%E5%9F%BA%E4%BA%8E%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E7%94%B5%E5%AD%90%E7%A7%A4/" class="md-nav__link">
+        基于卡尔曼滤波器的电子秤
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          知识技巧
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="知识技巧" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          知识技巧
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MLSA/" class="md-nav__link">
+        MLSA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+        滤波器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PID/pid/" class="md-nav__link">
+        PID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          无线定位技术
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        无线定位技术
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#toa" class="md-nav__link">
+    基于距离的无线定位技术（TOA）
+  </a>
+  
+    <nav class="md-nav" aria-label="基于距离的无线定位技术（TOA）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    视线路径丰富环境下
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    非视线传播严重环境下
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aoa" class="md-nav__link">
+    基于到达角度的无线定位技术（AOA）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#toaaoa" class="md-nav__link">
+    混合定位技术(TOA/AOA)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    基于散射体位置信息的泰勒算法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    多径信息辅助定位
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    衡量定位性能的基本指标
+  </a>
+  
+    <nav class="md-nav" aria-label="衡量定位性能的基本指标">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#root-mean-square-errorrmse" class="md-nav__link">
+    均方根误差（Root Mean Square Error，RMSE）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cumulative-distribution-function-cdf" class="md-nav__link">
+    累积分布函数（Cumulative Distribution Function, CDF）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cramer-rao-lower-bound-crlb" class="md-nav__link">
+    克拉美罗下界（Cramér-Rao-Lower-Bound, CRLB）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matlab" class="md-nav__link">
+    MATLAB仿真实验数据的获取
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          资源列表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="资源列表" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          资源列表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resource/resource/" class="md-nav__link">
+        软件资源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resource/link/" class="md-nav__link">
+        网站资源
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/tutorial/" class="md-nav__link">
+        参与编辑
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          关于
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/revision/" class="md-nav__link">
+        修订记录
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#toa" class="md-nav__link">
+    基于距离的无线定位技术（TOA）
+  </a>
+  
+    <nav class="md-nav" aria-label="基于距离的无线定位技术（TOA）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    视线路径丰富环境下
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    非视线传播严重环境下
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aoa" class="md-nav__link">
+    基于到达角度的无线定位技术（AOA）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#toaaoa" class="md-nav__link">
+    混合定位技术(TOA/AOA)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    基于散射体位置信息的泰勒算法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    多径信息辅助定位
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    衡量定位性能的基本指标
+  </a>
+  
+    <nav class="md-nav" aria-label="衡量定位性能的基本指标">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#root-mean-square-errorrmse" class="md-nav__link">
+    均方根误差（Root Mean Square Error，RMSE）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cumulative-distribution-function-cdf" class="md-nav__link">
+    累积分布函数（Cumulative Distribution Function, CDF）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cramer-rao-lower-bound-crlb" class="md-nav__link">
+    克拉美罗下界（Cramér-Rao-Lower-Bound, CRLB）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matlab" class="md-nav__link">
+    MATLAB仿真实验数据的获取
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<div class="admonition note">
+<p>本项目作者：苏晴</p>
+</div>
+<h1 id="_1">无线定位技术</h1>
+<h2 id="toa">基于距离的无线定位技术（TOA）</h2>
+<p>为了简化问题，我们考虑二维环境，扩展到三维环境中可以使用以下相同的步骤。在图1中，M个接收机在二维环境中随意分布。假设<span class="arithmatex">\((x,y)\)</span>是目标的位置，<span class="arithmatex">\((x_i,y_i)\)</span>是第<span class="arithmatex">\(i\)</span>个接收机的位置，<span class="arithmatex">\(d_i\)</span> 是第<span class="arithmatex">\(i\)</span>个接收机的到达时间测量数据[1]。到达时间可以由扩展卡尔曼滤波或者其他方法得到更加准确的结果。</p>
+<p><img alt="TOA定位方法原理图" src="https://img-blog.csdnimg.cn/7e5fed54ce7e499aa28599534e523618.jpeg#pic_center" /></p>
+<h3 id="_2">视线路径丰富环境下</h3>
+<p>目前在实践中，尤其在大城市或者多山区域，目标发出的信号通常不能直接到达接收者，他们总是比直接的花费更长的路径。所以通过结合非视距传播的影响，存在如下公式
+$$
+{r_i}^2 \ge {({x_i} - x)^2} + {({y_i} - y)^2} = {K_i} - 2{x_i}x - 2{y_i}y + {x^2} + {y^2},i = 1,2,...,M
+$$
+在这里<span class="arithmatex">\({K_i} = {x_i}^2 + {y_i}^2,{r_i} = c{d_i}\)</span>是目标和第i个接收者的测量路径，并且c是信号传播速度。并且通过定义一个新的变量<span class="arithmatex">\(R = {x^2} + {y^2}\)</span>,我们通过线性表达式重新写上式
+$$
+{\rm{ - }}2{x_i}x{\rm{ - }}2{y_i}y + R \le {r_i}^2 - {K_i},i = 1,2,...,M
+$$
+令<span class="arithmatex">\({Z_a} = {[x,y,R]^T}\)</span>,式(2)过矩阵形式表示如下
+$$
+{G_a}{Z_a} \le h 
+$$
+式中
+$$
+h = \left[ \begin{array}{l}
+{r_1}^2 - {K_1}\
+{r_2}^2 - {K_2}\
+...\
+{r_M}^2 - {K_M}
+\end{array} \right]{G_a} = \left[ {\begin{array}{*{20}{c}}
+{{\rm{ - }}2{x_1}}&amp;{{\rm{ - }}2{y_1}}&amp;1\
+\begin{array}{l}
+{\rm{ - }}2{x_2}\
+...
+\end{array}&amp;\begin{array}{l}
+{\rm{ - }}2{y_2}\
+...
+\end{array}&amp;\begin{array}{l}
+1\
+...
+\end{array}\
+{{\rm{ - }}2{x_M}}&amp;{{\rm{ - }}2{y_M}}&amp;1
+\end{array}} \right]
+$$
+当视距传播存在于目标和所有的接收机之间时，(3)式转化成等式，在这种情况下，最大似然定位方法由下式给出
+$$
+{Z_a} = {({G_a}^T{\psi ^{ - 1}}{G_a})^{ - 1}}{G_a}^T{\psi ^{ - 1}}h
+$$
+其中
+$$
+\begin{array}{l}
+\psi {\rm{ = }}E[\varphi {\varphi ^T}] = 4{c^2}BQB\
+\varphi {\rm{ = }}h - {G_a}{Z_a}\
+B = diag{ {r_1}^0,...,{r_M}^0} 
+\end{array}
+$$
+Q是测量噪声的协方差矩阵，并且<span class="arithmatex">\({r_1}^0,...,{r_M}^0\)</span>表示目标和i个接收机的真实的距离，在估计中，我们需要使用矩阵B。但是如(6)式，对角线的值是不知道的。所以，我们先使用测量值代替真实值，用来估计移动设备初始的位置，然后利用移动设备的初始解计算相应的矩阵B，然后利用新的矩阵B进一步得到精确的结果。这个过程是迭代的直至结果收敛。仿真显示大多数情况下这个过程可以很快的收敛在几次迭代以后。将该视线路径的解表示为<span class="arithmatex">\((x',y')\)</span>。</p>
+<h3 id="_3">非视线传播严重环境下</h3>
+<p>当非视线传播变得严重时，在等式(3)中不保持等式他的准确性开始下降。所以在非视线传播环境中，我们不得不考虑(3)式中的不等式情况。如果使用最大似然估计时，这就意味着我们应该找到(3)给出的条件下的最大似然估计值，而不是在全空间中搜索他。因此存在一个数学问题，如下
+$$
+\min { {(h - {G_a}{Z_a})^T}{\psi ^{ - 1}}(h - {G_a}{Z_a})} ,such \cdot that \cdot {G_a}{Z_a} \le h
+$$
+其中，<span class="arithmatex">\(h,{G_a},{Z_a}\)</span>和<span class="arithmatex">\(\psi <span class="arithmatex">\(像式(4)和式(6)有相同的定义。对于估计值\)</span>\psi <span class="arithmatex">\(，我们使用通过坐标\)</span>(x',y')\)</span>计算得出的<span class="arithmatex">\({r_1}',...,{r_M}'\)</span>，而不是将真实的值作为(6)中的B的对角线。非常明显可得，(2.7)式是一个线性约束最小二乘问题，是一类二次规划问题，有很多算法被开发解决这类问题。在这里，用MATLAB的quadprog函数进行求解，当求出(7)式中<span class="arithmatex">\({Z_a}\)</span>的满足要求的解时，<span class="arithmatex">\({Z_a}\)</span>的协方差矩阵可由下式计算
+$$
+{\mathop{\rm cov}} ({Z_a}) = {({G_a}^T{\psi ^{ - 1}}{G_a})^{ - 1}}
+$$
+因为在<span class="arithmatex">\({Z_a}\)</span>的估计过程中，我们使用了变量<span class="arithmatex">\(x,y,R\)</span>的独立性假设，尽管变量R依赖于变量<span class="arithmatex">\(x,y\)</span>，我们应该将结果修改如下。令<span class="arithmatex">\(x,y,R\)</span>的估计误差分别为<span class="arithmatex">\({e_1},{e_2},{e_3}\)</span>。在这里，<span class="arithmatex">\({[M]_{i,j}}\)</span>表示矩阵M的第<span class="arithmatex">\((i,j)\)</span>项，那么向量<span class="arithmatex">\({Z_a}\)</span>中的项成为
+$$
+{[{Z_a}]_1} = {x^0} + {e_1},{[{Z_a}]_2} = {y^0} + {e_2},{[{Z_a}]_3} = {R^0} + {e_3}
+$$
+其中，<span class="arithmatex">\({x^0},{y^0},{R^0}\)</span>表示为<span class="arithmatex">\(x,y,R\)</span>的真实值。令另一个误差矢量
+$$
+\psi ' = h' - {G_a}'{Z_p}
+$$
+其中
+$$
+h' = \left[ \begin{array}{l}
+{[{Z_a}]_1}^2\
+{[{Z_a}]_2}^2\
+{[{Z_a}]_3}^2
+\end{array} \right],Ga' = \left[ {\begin{array}{*{20}{c}}
+1&amp;0\
+\begin{array}{l}
+0\
+1
+\end{array}&amp;\begin{array}{l}
+1\
+1
+\end{array}
+\end{array}} \right]
+$$</p>
+<p>并且，<span class="arithmatex">\({Z_p} = \left[ \begin{array}{l}
+{x^2}\\
+{y^2}
+\end{array} \right]\)</span>，将式(9)代入式(10)中，可以得到
+$$
+\begin{array}{l}
+{[\psi ']_1} = 2{x^0}{e_1} + {e_1}^2 \approx 2{x^0}{e_1},\
+{[\psi ']_2} = 2{y^0}{e_2} + {e_2}^2 \approx 2{y^0}{e_2},{[\psi ']_3} = {e_3}
+\end{array}
+$$
+显然地，上述近似仅在误差很小的情况下才有效。<span class="arithmatex">\(\psi '\)</span>的协方差矩阵是
+$$
+\begin{array}{l}
+\psi '{\rm{ = }}E[\varphi '\varphi {'^T}] = 4B'{\mathop{\rm cov}} ({Z_a})B'\
+B' = diag{ {x^0},{y^0},0.5} 
+\end{array}
+$$
+作为一个近似，矩阵<span class="arithmatex">\(B'\)</span>中的<span class="arithmatex">\({x^0},{y^0}\)</span>可以由<span class="arithmatex">\({Z_a}\)</span>中的前两个元素<span class="arithmatex">\(x,y\)</span>代替。相似地，<span class="arithmatex">\({Z_p}\)</span>的估计可以由下式给出
+$$
+\begin{array}{l}
+Zp = {(Ga{'^T}\psi {'^{ - 1}}Ga')^{ - 1}}Ga{'^T}\psi {'^{ - 1}}h'\
+ \approx {(Ga{'^T}B{'^{ - 1}}{({\mathop{\rm cov}} (Za))^{ - 1}}B{'^{ - 1}}Ga')^{ - 1}}\
+ \bullet (Ga{'^T}B{'^{ - 1}}({\mathop{\rm cov}} (Za)){}^{ - 1}B{'^{ - 1}})h'
+\end{array}
+$$
+所以，最终位置<span class="arithmatex">\(Z{\rm{ = (}}x,y{{\rm{)}}^{\rm{T}}}\)</span>是
+$$
+Z{\rm{ = }}\sqrt {Zp} ,\begin{array}{<em>{20}{c}}
+{or}&amp;{Z{\rm{ =  - }}\sqrt {Zp} }
+\end{array}
+$$
+这里</em>x<em>的符号应与<span class="arithmatex">\({[{Z_a}]_1}\)</span>重合，同理</em>y*也是。</p>
+<h2 id="aoa">基于到达角度的无线定位技术（AOA）</h2>
+<p>在这一节中，假设：（1）AOA测量噪声是独立的0均值和已知方差的随机变量的高斯随机变量；（2）在AOA测量中存在视线路径。当存在的基站数量大于等于3时，我们有一系列多种因素决定的非线性定位方程。根据几何关系可知
+$$
+{\theta _i}{\rm{ = }}{\tan ^{ - 1}}(\frac{{y - {y_i}}}{{x - {x_i}}})
+$$
+<img alt="AOA定位方法原理图" src="https://img-blog.csdnimg.cn/1b610d4ff9c54b8796d6977748a555d0.jpeg#pic_center" /></p>
+<p>通过矩阵变换可得
+$$
+{x_i}\tan {\theta _i} - {y_i} = x\tan {\theta _i} - y
+$$
+可写为
+$$
+h = {G_a}{Z_a}
+$$
+式中：
+$$
+h = \left[ \begin{array}{l}
+{x_1}\tan {\theta _1} - {y_1}\
+{x_2}\tan {\theta _2} - {y_1}\
+...\
+{x_i}\tan {\theta _i} - {y_i}
+\end{array} \right],{G_a} = \left[ \begin{array}{l}
+\begin{array}{<em 20="20">{20}{c}}
+{\tan {\theta _1}}&amp;{ - 1}
+\end{array}\
+\begin{array}{</em>{c}}
+{\tan {\theta _2}}&amp;{ - 1}
+\end{array}\
+...\
+\begin{array}{<em 20="20">{20}{c}}
+{\tan {\theta _i}}&amp;{ - 1}
+\end{array}
+\end{array} \right]Za = {[\begin{array}{</em>{c}}
+x&amp;y
+\end{array}]^T}
+$$
+设估计位置对应的误差协方差矩阵为Q，则定位方案由下式给出
+$$
+{Z_a} = {({G_a}^T{Q^{ - 1}}{G_a})^{ - 1}}{G_a}^T{Q^{ - 1}}h
+$$
+基于到达角度的定位方法虽然比较简单方便，但是对于接收天线的方向性要求极高，定位精度受定位环境的影响很大。</p>
+<h2 id="toaaoa">混合定位技术(TOA/AOA)</h2>
+<p>在TOA/AOA混合定位技术中，将上节提到的AOA定位方法扩展到章节1中的TOA定位方法[2]。假设第<em>i</em>个基站RD坐标为<span class="arithmatex">\(({x_i},{y_i})\)</span>，与移动设备MD<span class="arithmatex">\((x,y)\)</span>的距离为<span class="arithmatex">\({r_i}\)</span>，角度为<span class="arithmatex">\({\theta _i}\)</span>，则参数之间满足
+$$
+\begin{array}{l}
+{(x - {x_i})^2} + {(y - {y_i})^2} = {r_i}^2\
+\tan {\theta _i} = \frac{{y - {y_i}}}{{x - {x_i}}}
+\end{array}
+$$
+可写为(18)式的形式。其中
+$$
+{G_a} = \left[ {\begin{array}{*{20}{c}}
+\begin{array}{l}
+ - 2{x_1}\
+\
+ - 2{x_i}\
+ - \tan {\theta _1}'\
+\
+ - \tan {\theta _i}'
+\end{array}&amp;\begin{array}{l}
+ - 2{y_1}\
+...\
+ - 2{y_i}\
+1\
+...\
+1
+\end{array}&amp;\begin{array}{l}
+1\
+\
+1\
+0\
+\
+0
+\end{array}
+\end{array}} \right]
+$$</p>
+<div class="arithmatex">\[
+{Z_a} = \left[ {\begin{array}{*{20}{c}}
+x\\
+y\\
+{{x^2} + {y^2}}
+\end{array}} \right]
+\]</div>
+<div class="arithmatex">\[
+h = \left[ {\begin{array}{*{20}{c}}
+{{r_1}{'^2} - {x_1}^2 - {y_1}^2}\\
+\begin{array}{l}
+...\\
+{r_i}{'^2} - {x_i}^2 - {y_i}^2\\
+{y_1} - \tan {\theta _1}'{x_1}\\
+...
+\end{array}\\
+{{y_i} - \tan {\theta _i}'{x_i}}
+\end{array}} \right]
+\]</div>
+<p>其中
+$$
+\begin{array}{l}
+{r_i}' = {r_i} + {n_d}\
+{\theta <em>i}' = {\theta _i} + {n</em>\theta }
+\end{array}
+$$
+式(25)中，<span class="arithmatex">\({n_d},{n_\theta }\)</span>分别是距离与角度的测量误差，设Q为联合方差矩阵，为一对角矩阵：
+$$
+Q{\rm{ = diag{ }}{\sigma <em _rm_d2="{\rm{d2">{{\rm{d1}}}}^{\rm{2}}{\rm{,}}{\sigma </em>}}}^{\rm{2}}{\rm{,}}...{\rm{,}}{\sigma <em _rm_1="{\rm{1" _theta="\theta">{{\rm{di}}}}^{\rm{2}}{\rm{,}}{\sigma </em>}}}^{\rm{2}}{\rm{,}}{\sigma <em _rm_i="{\rm{i" _theta="\theta">{\theta {\rm{2}}}}^{\rm{2}}{\rm{,}}...{\rm{,}}{\sigma </em>}}}^{\rm{2}}{\rm{} }}
+$$
+<span class="arithmatex">\({\sigma _{{\rm{di}}}}^{\rm{2}},{\sigma _{\theta {\rm{i}}}}^{\rm{2}}i = 1,2,...,M\)</span>分别是各基站TOA与AOA的测量方差。由式(26)构造的误差矢量$\Psi $协方差矩阵表示为
+$$
+\Psi {\rm{ = }}E[\psi {\psi ^T}] = 4BQB
+$$
+其中B矩阵定义为：
+$$
+B{\rm{ = diag{ }}{{\rm{r}}<em _rm_2="\rm{2">{\rm{1}}}^{\rm{0}}{\rm{,}}{{\rm{r}}</em>}}^{\rm{0}}{\rm{,}}...,{{\rm{r}}_{\rm{M}}}^{\rm{0}}{\rm{,0}}{\rm{.5,0}}{\rm{.5,0}}{\rm{.5} }}
+$$
+B矩阵中真实值<span class="arithmatex">\({{\rm{r}}_{\rm{i}}}^0\)</span>暂由测量值代替，使用最小二乘法对移动设备MD的位置进行第一次估计：
+$$
+{Z_a} = {({G_a}^T{\Psi ^{ - 1}}{G_a})^{ - 1}}{G_a}^T{\Psi ^{ - 1}}h
+$$
+第一次目标位置估计完成后，可以对B矩阵进行更新，利用式(29)可以得到新的位置估计。在进行误差矢量<span class="arithmatex">\(\Psi <span Z_a="Z_a" class="arithmatex">\(协方差矩阵计算的过程中，假设矩阵\)</span>\)</span>元素间相互独立，但是事实上并非如此，对于这个问题可以根据下式进行改进，首先计算<span class="arithmatex">\({Z_a}\)</span>的协方差矩阵为
+$$
+\Delta {Z_a} = c{({G_a}^T{\Psi ^{ - 1}}{G_a})^{ - 1}}{G_a}^T{\Psi ^{ - 1}}Bn,{\mathop{\rm cov}} ({Z_a}) = E[\Delta {Z_a}\Delta {Z_a}^T] = {({G_a}^T{\Psi ^{ - 1}}{G_a})^{ - 1}}
+$$
+根据<span class="arithmatex">\({Z_a}\)</span>矩阵元素之间的关系，构造新的误差矢量：
+$$
+\Psi ' = h' - {G_a}'{Z_a}'
+$$
+其中 
+$$
+h' = \left[ {\begin{array}{<em 20="20">{20}{c}}
+{{Z_{a,1}}^2}\
+{{Z_{a,2}}^2}\
+{{Z_{a,3}}^2}
+\end{array}} \right],{G_a}' = \left[ {\begin{array}{</em>{c}}
+1&amp;0\
+\begin{array}{l}
+0\
+1
+\end{array}&amp;\begin{array}{l}
+1\
+1
+\end{array}
+\end{array}} \right],{Z_a}' = \left[ \begin{array}{l}
+{x^2}\
+{y^2}
+\end{array} \right]
+$$
+协方差矩阵为
+$$
+\Psi {\rm{ = }}E[\psi {\psi ^T}] = 4B'{\mathop{\rm cov}} ({Z_a})B',B' = diag{ {x^0},{y^0},0.5} 
+$$
+其中，<span class="arithmatex">\({x^0},{y^0}\)</span>可由第二次目标估计的结果代替。<span class="arithmatex">\({Z_a}'\)</span>第三次目标估计的结果是
+$$
+{Z_a}' = {({G_a}{'^T}\Psi {'^{ - 1}}{G_a}')^{ - 1}}{G_a}{'^T}\Psi {'^{ - 1}}h'
+$$
+混合定位方法充分发挥各自技术参数的优势，混合定位算法可以比单纯的TOA定位算法取得更精确的结果，在一定的程度上可以提升定位精度，改善定位系统的性能。</p>
+<h2 id="_4">基于散射体位置信息的泰勒算法</h2>
+<p>在本课题中，我们考虑了一个简化的MIMO信道模型，在发射器和接收器之前有N个可分辨的传播路径，每个散射体只有一个反射信号。我们假设多径信号路径参数测得的如AOD, AOA和DOA相对于一个共同的方位方向[3]。</p>
+<p><img alt="第i条散射路径的接收和发送天线阵列图" src="https://img-blog.csdnimg.cn/f20a7dc2fca542ba97e43740995908ce.jpeg#pic_center" /></p>
+<p>如图3所示，令<span class="arithmatex">\(({x_b},{y_b}),({x_m},{y_m}),({x_i},{y_i})\)</span>表示基站（RD），移动设备（MD）和第<em>i</em>个散射体的真实位置。<span class="arithmatex">\(({x_m},{y_m})\)</span>和<span class="arithmatex">\(({x_i},{y_i})\)</span>是不知道的，但是可以被估计的。令<span class="arithmatex">\({r_1}\)</span>和<span class="arithmatex">\({r_2}\)</span>分别是构成第<em>i</em>条路径的线段的长度，最后，令<span class="arithmatex">\({\theta _i}\)</span>和<span class="arithmatex">\({\phi _i}\)</span>分别表示从基站到移动基站的第<em>i</em>条路径的到达角和出发角。从图3中，可以直接获得<span class="arithmatex">\({\theta _i}\)</span>和<span class="arithmatex">\({\phi _i}\)</span>的函数，以移动基站和散射体的位置为参量
+$$
+\begin{array}{l}
+{\theta <em 1i="1i">i}({x_m},{y_m},{x_i},{y_i}) = ta{n^{ - 1}}(\frac{{{y_i} - {y_m}}}{{{x_i} - {x_m}}})\
+{\phi _i}({x_m},{y_m},{x_i},{y_i}) = ta{n^{ - 1}}(\frac{{{y_i} - {y_b}}}{{{x_i} - {x_b}}})
+\end{array}
+$$
+<span class="arithmatex">\(i\)</span>的取值为1,..,N。相似地，将c 定义为信号的传播速度，到达时间可由下式计算
+$$
+\begin{array}{l}
+{r</em>} = \sqrt {{{({x_i} - {x_m})}^2} + {{({y_i} - {y_m})}^2}} \
+{r_{2i}} = \sqrt {{{({x_i} - {x_b})}^2} + {{({y_i} - {y_b})}^2}} \
+{t_i} = ({r_{1i}} + {r_{2i}})/c
+\end{array}
+$$
+此方法的目的是从不确定的测量参数<span class="arithmatex">\(\mathop {{\theta _i}}\limits^ \wedge  ,\mathop {{\phi _i}}\limits^ \wedge  ,\mathop {{t_i}}\limits^ \wedge  <span class="arithmatex">\(和确切的位置\)</span>({x_b},{y_b})\)</span>确定未知位置<span class="arithmatex">\(({x_m},{y_m})\)</span>。统计学上，测量值包含噪声，如下式
+$$
+\begin{array}{l}
+\mathop {{t_i}}\limits^ \wedge   = {t_i}({x_m},{y_m},{x_i},{y_i}) + {n_{{t_i}}}\
+{\mathop \theta \limits^ \wedge  <em>i} = {\theta _i}({x_m},{y_m},{x_i},{y_i}) + {n</em>{{\theta <em _i="_i" _phi="{\phi">i}}}\
+\mathop {{\phi _i}}\limits^ \wedge   = {\phi _i}({x_m},{y_m},{x_i},{y_i}) + {n</em>}}
+\end{array}
+$$
+其中，对于$\mathop {{t_i}}\limits^ \wedge  ,{\mathop \theta \limits^ \wedge  _i},\mathop {{\phi _i}}\limits^ \wedge  $，<em>i</em>取值为1到N。</p>
+<p>在这一部分，推导了一个迭代的最小二乘的定位估计器，去解决移动基站定位的非线性TOA/AOA/AOD等式。令这个向量<span class="arithmatex">\(X{\rm{ = [}}{{\rm{x}}_{\rm{m}}}{\rm{,}}{{\rm{y}}_{\rm{m}}}{\rm{,}}{{\rm{x}}_{\rm{1}}}{\rm{,}}{{\rm{y}}_{\rm{1}}}{\rm{,}}...{\rm{,}}{{\rm{x}}_{\rm{N}}}{\rm{,}}{{\rm{y}}_{\rm{N}}}{\rm{]}}\)</span>表示移动设备和散射体位置的先验值。定义F是一个3N的列向量
+$$
+F{\rm{ = }}\left( \begin{array}{l}
+{t_i}({x_m},{y_m},{x_i},{y_i})\
+...\
+{\theta _i}({x_m},{y_m},{x_i},{y_i})\
+...\
+{\phi _i}({x_m},{y_m},{x_i},{y_i})
+\end{array} \right)
+$$
+(38)式中的对于(2N+2)的向量X的估计模型，当存在加性高斯白噪声时，可以写为矩阵形式
+$$
+M{\rm{ = }}F(X) + n
+$$
+其中，向量<span class="arithmatex">\(M{\rm{ = [}}\mathop {{{\rm{t}}_{\rm{i}}}}\limits^ \wedge  ...\mathop {{\theta _{\rm{i}}}{\rm{.}}}\limits^ \wedge  ..\mathop {{\phi _{\rm{i}}}}\limits^ \wedge  {{\rm{]}}^{\rm{T}}}\)</span>代表3N的测量数据。测量误差<span class="arithmatex">\(n = {[{n_{{t_i}}}...{n_{{\theta _i}}}...{n_{{\phi _i}}}]^T}\)</span>是一个多元随机变量，并且有着以下形式的3N<em 20="20">3N的协方差矩阵
+$$
+Q{\rm{ = }}\left( {\begin{array}{</em>{c}}
+{{Q_t}}&amp;0&amp;0\
+0&amp;{{Q_d}}&amp;0\
+0&amp;0&amp;{{Q_a}}
+\end{array}} \right)
+$$
+其中，<span class="arithmatex">\({Q_t}\)</span>是到达时间TOA的协方差矩阵，<span class="arithmatex">\({Q_{\rm{d}}}\)</span>和<span class="arithmatex">\({Q_a}\)</span>分别是AOD（出发角度）和AOA（到达角度）的协方差矩阵。</p>
+<p>假设X是未知的非随机变量，并且n是零均值高斯分布，最大似然估计X可由下式给出
+$$
+\mathop X\limits^ \wedge  {\rm{ = }}\mathop {{\rm{argmin}}}\limits_X {{\rm{[M - F(X)]}}^{\rm{T}}}{{\rm{Q}}^{{\rm{ - 1}}}}{\rm{[M - F(X)]}}
+$$
+如果<span class="arithmatex">\(F(X) = HX\)</span>是一个以连续矩阵H为系数的线性矩阵，移动定位的估计位置可以由下式定位方法给出
+$$
+X{\rm{ = (}}{{\rm{H}}^{\rm{T}}}{{\rm{Q}}^{{\rm{ - 1}}}}{\rm{H}}{{\rm{)}}^{{\rm{ - 1}}}}{{\rm{H}}^{\rm{T}}}{{\rm{Q}}^{{\rm{ - 1}}}}{\rm{M}}
+$$
+为了确定一个简单的估计量，非线性函数<span class="arithmatex">\(F(X)\)</span>必须要线性化。最直接的线性化方法是使用泰勒级数展开方法。假设<span class="arithmatex">\(\delta X\)</span>很小，我们可以写为下式
+$$
+F(X + \delta X) \simeq F(X) + G\delta X
+$$
+F对X的梯度G定义为3N×(2N+2)的矩阵，其中第<em>i</em>行是标量<span class="arithmatex">\({F_i}\)</span>关于X的梯度
+$$
+G{\rm{ = }}\frac{\partial }{{\partial X}}F{\rm{ = }}\left( {\begin{array}{*{20}{c}}
+{\frac{{\partial {F_1}(X)}}{{\partial {X_1}}}}&amp;{...}&amp;{\frac{{\partial {F_1}(X)}}{{\partial {X_{2N + 2}}}}}\
+{...}&amp;{...}&amp;{...}\
+{\frac{{\partial {F_{3N}}(X)}}{{\partial {X_1}}}}&amp;{...}&amp;{\frac{{\partial {F_{3N}}(X)}}{{\partial {X_{2N + 2}}}}}
+\end{array}} \right)
+$$
+如果<span class="arithmatex">\({X^{n - 1}}\)</span>是X的近似值，并且<span class="arithmatex">\(\delta X\)</span>是一个小扰动，则由式(43)可得下式
+$$
+F({X^{(n - 1)}} + \delta X) \simeq F({X^{(n - 1)}}) + G\delta X
+$$
+在等式（41）中表示这种关系，对于<span class="arithmatex">\(\delta {X^{(n - 1)}}\)</span>的估计<span class="arithmatex">\(\delta X\)</span>由(2.46)式给出，并且M由<span class="arithmatex">\([M{\rm{ - }}F({X^{(n - 1)}})]\)</span>代替，H使用G来代替
+$$
+\delta {X^{(n - 1)}} = {({G^T}{Q^{ - 1}}G)^{ - 1}}{G^T}{Q^{ - 1}}[M - F({X^{(n - 1)}})]
+$$
+提供了一个新的估计模型<span class="arithmatex">\({X^{(n)}} = {X^{(n - 1)}} + \delta {X^{(n - 1)}}\)</span>.</p>
+<p>该程序可以从假设接近X的初始值<span class="arithmatex">\({X^{(0)}}\)</span>开始迭代应用，然后计算一系列<span class="arithmatex">\({X^{(n)}}\)</span>的估计值。这个过程不断重复，直至<span class="arithmatex">\(\delta X\)</span>变得比阈值还小，表明收敛。无线MIMO通信系统中，接发端的天线阵列的优势在于可以利用多径信号的冗余性，并且得益于先进的阵列信号处理技术，更多的到达角、出发角和到达延迟等参数可以获取。该方法最大限度地减少了估计多径传输导致的误差，并通过求解一组代数位置公示，目标位置得到了估计。</p>
+<p>代码实现的难点是计算式(44)中的雅克比矩阵，尝试过X对F(X)每一行求梯度，但是效果不理想。</p>
+<h2 id="_5">多径信息辅助定位</h2>
+<p>通常利用非视距路径构造LPMD，图3表示了非视线路径(<span class="arithmatex">\(RD{\rm{ - }}{S_i}{\rm{ - }}MD\)</span>)，其中<span class="arithmatex">\({S_{j,m}}\)</span>是未知散射点。图中<span class="arithmatex">\({d_{j,m}},{\theta _{j,m}}\)</span>和<span class="arithmatex">\({r_{j,m}},{\phi _{j,m}}\)</span>分别是第<em>j</em>个RD和MD的第<em>m</em>条路径测量的TOA和AOA值，其中，<span class="arithmatex">\(j = 1,...,N\)</span>，N是基站RD的数量，<span class="arithmatex">\(m = 2,...,M\)</span>，即<span class="arithmatex">\(M{\rm{ - }}1\)</span>是NLOS路径的数目，<span class="arithmatex">\(m = 1\)</span>是代表LOS路径。在图3中，实际的散射点<span class="arithmatex">\({S_{j,m}}\)</span>是在沿着参考设备<span class="arithmatex">\(R{D_j}\)</span>且到达角度为<span class="arithmatex">\({\theta _{j,m}}\)</span>的直线上，如果给定测量数据的集合<span class="arithmatex">\({d_{j,m}},{\theta _{j,m}}\)</span>，<span class="arithmatex">\({r_{j,m}},{\phi _{j,m}}\)</span>，可以注意到<span class="arithmatex">\({S_{j,m}}\)</span>的位置不是唯一的，其中一个可能的散射点<span class="arithmatex">\(S{'_{j,m}}\)</span>如图所示，散射体到可能的移动设备的路径长度为<span class="arithmatex">\(r{'_{{S_{j,m}}}}\)</span>，<span class="arithmatex">\(MD'\)</span>可以位于以<span class="arithmatex">\(S{'_{j,m}}\)</span>为圆心，<span class="arithmatex">\(r{'_{{S_{j,m}}}}\)</span>为半径的圆周上的任意位置，但是如果给定到达角度<span class="arithmatex">\({\phi _{j,m}}\)</span>，便可以确定圆周上唯一的移动设备的位置<span class="arithmatex">\(MD'\)</span>，通过上述过程，所有的可能的移动设备的位置都可以通过形成以散射体为圆心的圆来识别，位于相应的散射体圆周上的所有可能的移动设备的位置组合在一起，就形成了一条直线，这条直线被称为第<em>m</em>条信号路径的可能移动设备的位置线（LPMD）。</p>
+<p><img alt="单界散射路径的可能移动设备线" src="https://img-blog.csdnimg.cn/bc84e21a4e794ad085fb7b8a21ff42c3.jpeg#pic_center" /></p>
+<p>基站<span class="arithmatex">\(R{D_j}\)</span>和移动设备MD之间的另一条信号路径可以构造其他LPMD，两条LPMD的交点可以确定移动设备的位置。</p>
+<p>多径辅助定位的方法可以参照文献[4]进行，流程图如下</p>
+<p><img alt="LPMD定位算法流程图" src="https://img-blog.csdnimg.cn/7584694f99a840b1ab899cec2a193a32.jpeg#pic_center" /></p>
+<h2 id="_6">衡量定位性能的基本指标</h2>
+<h3 id="root-mean-square-errorrmse">均方根误差（Root Mean Square Error，RMSE）</h3>
+<p>均方根误差是一种常用的衡量定位算法性能的指标，它反映了解算的目标位置与真实位置的偏离情况，其计算方式如下：
+$$
+RMSE{\rm{ = }}\sqrt {\frac{1}{M}\sum\limits_{i = 1}^M {\left| {\mathop {{x_i}}\limits^\^  - {x_i}} \right|} }
+$$
+其中，M代表实验的蒙特卡洛方法的次数，<span class="arithmatex">\(\mathop {{x_i}}\limits^\^ <span class="arithmatex" x_i="x_i">\(代表第i次蒙特卡洛方法中解算的目标位置，\)</span>\)</span>表示第<em>i</em>次蒙特卡洛方法中真实的目标位置。</p>
+<h3 id="cumulative-distribution-function-cdf">累积分布函数（Cumulative Distribution Function, CDF）</h3>
+<p>累积分布函数就是分布函数，即概率密度函数的积分，可以描述一个随机变量X的概率分布。通常计算RMSE的CDF来描述方法的性能。</p>
+<p>对于所有实数x，累积分布函数定义如下：
+$$
+CDF{\rm{ = }}P(x) = P(X \le x)
+$$
+其中x表示门限值，表示所有小于等于x的值出现概率的和。在蒙特卡洛实验仿真中，CDF主要统计特定的定位误差门限下某一定位误差占总体的定位误差的比例，当定位误差低于特定的定位误差门限的比例越高，表明该定位系统的定位精度越高。</p>
+<h3 id="cramer-rao-lower-bound-crlb">克拉美罗下界（Cramér-Rao-Lower-Bound, CRLB）</h3>
+<p>克拉美罗下界表示参数无偏估计的理论下界，是定位系统衡量定位参数的一个重要指标，通常把均方误差与CRLB相比较，衡量算法的性能，同时，CRLB还可以估计服从高斯分布的参数。CRLB的核心表达为，任何无偏估计量的方差至少与 Fisher 信息矩阵（FIM）的倒数一样大，FIM表示随机变量的一个样本所能提供的关于状态参数在某种意义下的平均信息量。达到此界限的无偏估计器被称为提供最低可能的最小均方误差的有效估计器。</p>
+<h2 id="matlab">MATLAB仿真实验数据的获取</h2>
+<p>可以参照文献[4]中的实验数据，考虑一下四种场景（场景A、场景B、场景C、场景D），如图所示。同样地，可以自己利用硬件获取实验数据。</p>
+<p>1、 场景A-所有的参考设备都在移动设备的视线范围内；</p>
+<p>2、 场景B-两个参考设备都在移动设备的视线范围内；</p>
+<p>3、 场景C-一个参考设备都在移动设备的视线范围内；</p>
+<p>4、 场景D-所有的参考设备都在移动设备的非视线范围内；</p>
+<p><img alt="不同移动设备位置与参考设备RDs之间的路线跟踪示意图" src="https://img-blog.csdnimg.cn/439e4c5f2b55408aa6a15f0963c41425.jpeg#pic_center" /></p>
+<p>为了与现有的定位方案进行比较，实际的测量数据将使用均值为零和已知方差的高斯随机变量噪声产生噪声影响，估计位置的定位的均方根误差由下式计算
+$$
+{\sigma _{rms}} = \sqrt {{{(x - {x^o})}^2} + {{(y - {y^o})}^2}} 
+$$
+每种算法进行10000次的独立运算，通过其累积概率分布（CDF）曲线进行定位准确性的比较。</p>
+<h2 id="_7">参考文献</h2>
+<p>[1] Xin Wang, Zongxin Wang and B. O'Dea, "A TOA-based location algorithm reducing the errors due to non-line-of-sight (NLOS) propagation," in IEEE Transactions on Vehicular Technology, vol. 52, no. 1, pp. 112-116, Jan. 2003, doi: 10.1109/TVT.2002.807158.</p>
+<p>[2] 邓平,刘林,范平志.一种改进的TOA/AOA混合定位算法[J].电路与系统学报,2003(04):54-57.</p>
+<p>[3] J. Li, J. Conan and S. Pierre, "Mobile Station Location Estimation for MIMO Communication Systems," 2006 3rd International Symposium on Wireless Communication Systems, 2006, pp. 561-564, doi: 10.1109/ISWCS.2006.4362361.</p>
+<p>[4] C. K. Seow and S. Y. Tan, "Non-Line-of-Sight Localization in Multipath Environments," in IEEE Transactions on Mobile Computing, vol. 7, no. 5, pp. 647-660, May 2008, doi: 10.1109/TMC.2007.70780.</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
+      
+        
+        <a href="../../PID/pid/" class="md-footer__link md-footer__link--prev" aria-label="上一页: PID" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              PID
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../../resource/resource/" class="md-footer__link md-footer__link--next" aria-label="下一页: 软件资源" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              软件资源
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.0f659f14.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

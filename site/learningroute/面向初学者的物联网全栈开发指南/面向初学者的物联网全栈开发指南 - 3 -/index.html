@@ -1,0 +1,992 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/learningroute/%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%20-%203%20-/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.0">
+    
+    
+      
+        <title>面向初学者的物联网全栈开发指南 - 3 - IOT平台和MQTT协议 - DOC316</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fd896c8a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#-3-iotmqtt" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="DOC316" class="md-header__button md-logo" aria-label="DOC316" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DOC316
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              面向初学者的物联网全栈开发指南 - 3 - IOT平台和MQTT协议
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DOC316" class="md-nav__button md-logo" aria-label="DOC316" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    DOC316
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          学习路径
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="学习路径" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          学习路径
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IOT/" class="md-nav__link">
+        IOT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9F%BA%E4%BA%8E%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E7%94%B5%E5%AD%90%E7%A7%A4/" class="md-nav__link">
+        基于卡尔曼滤波器的电子秤
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          知识技巧
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="知识技巧" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          知识技巧
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/MLSA/" class="md-nav__link">
+        MLSA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+        滤波器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/PID/pid/" class="md-nav__link">
+        PID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/" class="md-nav__link">
+        无线定位技术
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          资源列表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="资源列表" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          资源列表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resource/resource/" class="md-nav__link">
+        软件资源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resource/link/" class="md-nav__link">
+        网站资源
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/tutorial/" class="md-nav__link">
+        参与编辑
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          关于
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/revision/" class="md-nav__link">
+        修订记录
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 准备工具
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 新建产品
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2. 添加设备
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 准备信息
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-topic" class="md-nav__link">
+    4. TOPIC
+  </a>
+  
+    <nav class="md-nav" aria-label="4. TOPIC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 编辑物模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-topic" class="md-nav__link">
+    4.2 订阅TOPIC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-topic" class="md-nav__link">
+    4.3 发布到对应TOPIC
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mqtt" class="md-nav__link">
+    5. MQTT协议
+  </a>
+  
+    <nav class="md-nav" aria-label="5. MQTT协议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-connect" class="md-nav__link">
+    5.1 连接CONNECT
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 连接CONNECT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    报头
+  </a>
+  
+    <nav class="md-nav" aria-label="报头">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    固定报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    可变报头
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    载荷
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    响应
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-subscribe" class="md-nav__link">
+    5.2 订阅SUBSCRIBE
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 订阅SUBSCRIBE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    报头
+  </a>
+  
+    <nav class="md-nav" aria-label="报头">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    固定报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    可变报头
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    载荷
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    响应
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-publish-qos0" class="md-nav__link">
+    5.3 发布PUBLISH （QoS0）
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 发布PUBLISH （QoS0）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    报头
+  </a>
+  
+    <nav class="md-nav" aria-label="报头">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    固定报头
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    可变报头
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    载荷
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-ping" class="md-nav__link">
+    5.4 PING
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-disconnect" class="md-nav__link">
+    5.5 断开 DISCONNECT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="-3-iotmqtt">面向初学者的物联网全栈开发指南 - 3 - IOT平台和MQTT协议</h1>
+<p>在本章，我们将学习IOT平台的配置，通过阿里云物联网平台的文档认识IOT平台的特性，并学习在建立硬件侧到IOT平台线路过程中必不可少的MQTT协议。</p>
+<p>通过此链接进入阿里云物联网平台<a href="https://iot.console.aliyun.com/lk/summary/new">物联网平台 (aliyun.com)</a>，登陆支付宝账号，开通公共实例，进入公共实例后，在左侧栏的最后一项为官方文档，推荐通过以下链接开始学习，也可以直接参考本教程。平台中，产品为一类相同功能设备的集合，在这里可以批量管理所属不同产品的一类设备，而设备即一个单独的设备。</p>
+<ul>
+<li>
+<p><a href="https://help.aliyun.com/document_detail/131611.html">概述 (aliyun.com)</a></p>
+</li>
+<li>
+<p><a href="https://help.aliyun.com/document_detail/73705.html">创建产品与设备 (aliyun.com)</a></p>
+</li>
+</ul>
+<h2 id="1">1. 准备工具</h2>
+<ul>
+<li>MQTT.fx（阿里云链接：<a href="https://www.jensd.de/apps/mqttfx/1.7.1/?spm=a2c4g.11186623.0.0.679242356PKL1s">Index of /apps/mqttfx/1.7.1 (jensd.de)</a>）</li>
+<li>哈希加密工具（百度搜索即可）</li>
+<li>快速上云工具（自制小工具，百度网盘：链接：https://pan.baidu.com/s/1rOJRhyrP0kcqkHrM50a_Iw  提取码：1ptt ）</li>
+<li>网络调试助手（官方链接：<a href="http://www.cmsoft.cn/resource/102.html">NetAssist网络调试助手 V5.0.2-软件工具-野人家园 (cmsoft.cn)</a>）</li>
+<li>串口调试助手</li>
+</ul>
+<h2 id="2">2. 新建产品</h2>
+<p>依次选择：设备管理-产品-创建产品</p>
+<ol>
+<li>
+<p>产品名称</p>
+</li>
+<li>
+<p>所属品类</p>
+</li>
+</ol>
+<p>若选择标准品类，将自动创建预设的设备属性、TOPIC等；若选择自定义品类，设备属性等需要在创建后自行设置，建议选择自定义品类。</p>
+<ol>
+<li>节点类型</li>
+</ol>
+<p>默认选择直连设备即可。</p>
+<ol>
+<li>联网与数据</li>
+</ol>
+<p>联网设备为ESP8266，那么方式为WIFI；数据格式也选择默认的“ICA 标准数据格式”。</p>
+<p>创建完毕后，我们查看产品详情，选择Topic类列表-物模型通信Topic，在这里我们可以通过属性上报的Topic实现硬件侧到IOT平台的数据上传，先有个印象，稍后会提到。</p>
+<p><img alt="image-20210823154602182" src="https://gitee.com/FZR95/pic316/raw/master/image-20210823154602182.png" /></p>
+<h2 id="2_1">2. 添加设备</h2>
+<p>在左侧栏依次选择设备管理-设备，添加设备，产品为刚刚创建的产品，并输入设备名(Device Name)，在设备信息中我们可以看到设备处于未激活状态。到此为止我们在IOT平台中成功创建了一个设备位置，现在需要一个真实的设备连接这个设备位置，这样我们刚刚添加的设备将会被激活，处于正常工作状态。</p>
+<p>在设备-DeviceSecret 查看-设备证书中，单击“一键复制”即可获取所谓的设备“三元组”（JSON格式）。</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;ProductKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxx&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;DeviceName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;DeviceSecret&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>在这里为没有接触过JSON的同学介绍一下，{}表示一个对象，对象有三个名称不同的值，三值的名称分别在冒号“:”的左侧，包括在双引号内，冒号的右侧为对应的值，可以为双引号括起来的字符串类型，数字类型，数组类型等，也可以是另一个对象。<a href="https://www.runoob.com/json/json-tutorial.html">JSON 教程 | 菜鸟教程 (runoob.com)</a></p>
+<h2 id="3">3. 准备信息</h2>
+<p>我们现在使用MQTT.fx软件模拟一个真实的设备，熟悉产品和设备的信息，验证前面步骤创建的正确性，具体MQTT.fx配置方式参照官方文档即可</p>
+<ul>
+<li>官方文档：<a href="https://help.aliyun.com/document_detail/140507.html">使用MQTT.fx接入物联网平台 (aliyun.com)</a></li>
+</ul>
+<p>我们需要准备的东西有：</p>
+<p>产品所属的：{ProductSecret}, {ProductKey}；</p>
+<p>设备所属的：{DeviceName}, {DeviceSecret}；</p>
+<p>IOT平台服务器地址：<em>${ProductKey}.iot-as-mqtt.cn-shanghai.aliyuncs.com</em>，对于公共实例，服务器地址都为华东2（上海），端口为1883;</p>
+<p>Client Id：要求的格式为<em><span Mode="Mode" class="arithmatex">\({ClientID}|securemode=\)</span>,signmethod=<span ClientID="ClientID" class="arithmatex">\({SignMethod}|*，其中ClientID为您自定义的设备ID，安全模式为TCP直连，算法使用hmacsha1即可，因此只需填写一个变量, *\)</span>|securemode=3,signmethod=hmacsha1|</em> ；</p>
+<p>最后，密码为hmacsha1使用<em>${DeviceSecret}</em>加密后的</p>
+<p><em>clientId<span class="arithmatex" devicename="devicename">\({clientId}deviceName\)</span>productKey${productKey}</em> 。</p>
+<p>总结，我们使用创建产品、设备后系统生成的信息组合成MQTT连接参数：</p>
+<div class="highlight"><pre><span></span><code><span class="nx">mqttclientId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">$</span><span class="p">{</span><span class="nx">clientId</span><span class="p">}</span><span class="o">|</span><span class="nx">securemode</span><span class="o">=</span><span class="mf">3</span><span class="p">,</span><span class="nx">signmethod</span><span class="o">=</span><span class="nx">hmacsha1</span><span class="o">|</span><span class="w"></span>
+<span class="nx">mqttUsername</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">$</span><span class="p">{</span><span class="nx">devicename</span><span class="p">}</span><span class="o">&amp;</span><span class="nx">$</span><span class="p">{</span><span class="nx">productKey</span><span class="p">}</span><span class="w"></span>
+<span class="nx">mqttPassword</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clientId$</span><span class="p">{</span><span class="nx">clientId</span><span class="p">}</span><span class="nx">deviceName$</span><span class="p">{</span><span class="nx">devicename</span><span class="p">}</span><span class="nx">productKey$</span><span class="p">{</span><span class="nx">productKey</span><span class="p">}</span><span class="w"></span>
+<span class="nx">mqttPassword</span><span class="p">(</span><span class="nx">hmacsha1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">密钥为$</span><span class="p">{</span><span class="nx">DeviceSecret</span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>结合官方给出的文档，若所有配置信息填写正确，在MQTT.fx中单机connect，刷新页面，即可看到我们的设备已经在线。</p>
+<p><img alt="image-20210823170859233" src="https://gitee.com/FZR95/pic316/raw/master/image-20210823170859233.png" /></p>
+<h2 id="4-topic">4. TOPIC</h2>
+<ul>
+<li><a href="https://help.aliyun.com/document_detail/73731.html">什么是Topic (aliyun.com)</a></li>
+</ul>
+<h3 id="41">4.1 编辑物模型</h3>
+<p>接下来，我们要让设备上传信息至IOT平台，假设我们的设备是一个环境检测装置，需要上传温湿度信息。</p>
+<p>我们回到产品，在功能定义中编辑物模型，点击编辑草稿，添加自定义功能，按照如下填写</p>
+<p><img alt="image-20210823170639616" src="https://gitee.com/FZR95/pic316/raw/master/image-20210823170639616.png" /></p>
+<p>随后我们确定发布上线，再看到我们的产品物模型已经具有一个温度属性了。</p>
+<p><img alt="image-20210823170736860" src="https://gitee.com/FZR95/pic316/raw/master/image-20210823170736860.png" /></p>
+<p>回到设备“device1”，此时设备已经继承了产品刚刚更改的物模型，具备“温度”属性。</p>
+<p><img alt="image-20210823170931950" src="https://gitee.com/FZR95/pic316/raw/master/image-20210823170931950.png" /></p>
+<h3 id="42-topic">4.2 订阅TOPIC</h3>
+<p>我们需要TOPIC更改设备属性，查看设备的Topic列表，发现没有订阅的Topic，在调用Topic之前，每个设备都需要订阅特定的Topic，我们在创建产品时提到过Topic，若设置设备属性，则应该首先让设备订阅</p>
+<ul>
+<li>/sys/<span DeviceName="DeviceName" class="arithmatex">\({ProductKey}/\)</span>/thing/event/property/post</li>
+</ul>
+<p>在MQTT.fx中，使用Subscribe功能，订阅该Topic，您同时可以注意到，Topic也可以取消订阅</p>
+<p><img alt="订阅Topic" src="https://gitee.com/FZR95/pic316/raw/master/image-20210823172550910.png" /></p>
+<h3 id="43-topic">4.3 发布到对应TOPIC</h3>
+<p>接着使用Publish功能，用刚才的Topic发送信息，数据格式为刚刚选择的ICA标准数据格式（Alink JSON），</p>
+<ul>
+<li>官方文档：<a href="https://help.aliyun.com/document_detail/89301.htm?spm=a2c4g.11186623.0.0.12df7b1dw8j0kO#section-g4j-5zg-12b">设备属性、事件、服务 (aliyun.com)</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;thing.service.property.set&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;1562283421&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;temp&quot;</span><span class="p">:</span><span class="mi">45</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;1.0.0&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>其中“method”同Topic的后半部分；“id”为每条消息的自定义id，其实可以重复，但不建议重复，可以随机；“params”即需要设置的设备属性，把设备看作一个对象，对象里的值为设备的属性；“version”为固定部分。</p>
+<p><img alt="Publish" src="https://gitee.com/FZR95/pic316/raw/master/image-20210823172653021.png" /></p>
+<p>发送完毕后，回到设备的物模型数据，可以看到</p>
+<p><img alt="image-20210823174516206" src="https://gitee.com/FZR95/pic316/raw/master/image-20210823174516206.png" /></p>
+<p>要善于运用IOT平台提供的各种工具，在日志服务中，可以看到刚刚发送到云平台的数据。</p>
+<p><img alt="image-20210823174616212" src="https://gitee.com/FZR95/pic316/raw/master/image-20210823174616212.png" /></p>
+<p>以上介绍了设备属性的上报链路，设备获取云平台的信息也可以用同样的方法，通过TOPIC发送（Publish）一条数据，读取来自IOT平台的返回值即可，通过MQTT.fx可以看到云平台的返回数据。</p>
+<h2 id="5-mqtt">5. MQTT协议</h2>
+<p>在MQTT.fx软件中，协议已经被封装好了，只需要填写对应的产品、设备信息，在实际应用中我们要使用ESP8266发送基于MQTT协议的报文，协议格式比较简单，在这里分享一个b站上的教程视频</p>
+<ul>
+<li>MQTT介绍（链接中的P30，P31）：<a href="https://www.bilibili.com/video/BV1k4411q7Cc?p=30">【超纬电子】ESP8266 SDK视频教程_哔哩哔哩_bilibili</a></li>
+<li>MQTT3.1.1中文版：<a href="http://mqtt.p2hp.com/mqtt311">MQTT 3.1.1 协议中文版 | MQTT中文网 (p2hp.com)</a></li>
+</ul>
+<p>总而言之，MQTT由HEX十六进制构成，分为报头和载荷两部分，固定报头首先指示了本条报文的功能，如在上文用到的Publish发送，Subscribe订阅，等，接着指示了报文的长度；可变报头按需填写；载荷包含长度和内容。</p>
+<p>现在使用网络调试助手在PC模拟ESP8266发送完整MQTT协议内容做调试，协议类型为TCP Client，远程主机地址和端口如上文所述。下面介绍的报文均可使用我自制的快速上云工具一键生成，做的比较仓促，但是能用Orz。</p>
+<ul>
+<li>快速上云工具（自制小工具，百度网盘：链接：https://pan.baidu.com/s/1rOJRhyrP0kcqkHrM50a_Iw  提取码：1ptt ）</li>
+</ul>
+<h3 id="51-connect">5.1 连接CONNECT</h3>
+<p>在连接到服务器内，我们有一段较短的时间可以向IOT平台服务端发送CONNECT连接报文，报文错误或超时都会导致服务端主动断开连接。</p>
+<h4 id="_1">报头</h4>
+<p>示例：10 <LENGTH> 00 04 4D 51 54 54 04 C2 00 64</p>
+<h5 id="_2">固定报头</h5>
+<p><strong>固定位</strong> 10</p>
+<p><strong>剩余长度字段</strong>  <LENGTH>， <em>固定报头之后的所有字段长度</em></p>
+<h5 id="_3">可变报头</h5>
+<p><strong>协议名</strong> 00 04 4D 51 54 54</p>
+<p><strong>协议版本</strong> 04</p>
+<p><strong>连接标志</strong> C2 </p>
+<p><strong>KeepAlive时长</strong> 00 64, <em>表示系统在未收到设备消息的多长时间后自动断开连接，这里设置为100秒</em></p>
+<h4 id="_4">载荷</h4>
+<p><LENGTH> <LENGTH> ${mqttclientId} <LENGTH> <LENGTH> ${mqttUsername} <LENGTH> <LENGTH> ${mqttPassword(hmacsha1)}</p>
+<p>载荷中的参数已在第三节给出，最后的mqttPassword是加密后的字符串，每项参数前面的两个字节表示该参数的长度。</p>
+<h4 id="_5">响应</h4>
+<p><strong>成功</strong> 20 02 00 00</p>
+<p><img alt="image-20210823233548179" src="https://gitee.com/FZR95/pic316/raw/master/image-20210823233548179.png" /></p>
+<p>在连接指令发出，响应成功后，我们可以进行接下来的步骤了。</p>
+<h3 id="52-subscribe">5.2 订阅SUBSCRIBE</h3>
+<p>正如前面提到的，TOPIC首先需要订阅才能使用。</p>
+<h4 id="_6">报头</h4>
+<p>示例：82 <LENGTH> 00 0A</p>
+<h5 id="_7">固定报头</h5>
+<p><strong>固定位</strong> 82</p>
+<p><strong>剩余长度字段</strong>  <LENGTH>， <em>固定报头之后的所有字段长度</em></p>
+<h5 id="_8">可变报头</h5>
+<p>00 0A</p>
+<h4 id="_9">载荷</h4>
+<p><LENGTH> <LENGTH> ${TOPIC} <QoS></p>
+<p>其中QoS为服务质量等级， 00为无需认证，01为认证一次，02为至少认证一次，这里选择00无需认证即可。</p>
+<h4 id="_10">响应</h4>
+<p><strong>成功</strong> 90 <LENGTH> <ID> 00 </p>
+<h3 id="53-publish-qos0">5.3 发布PUBLISH （QoS0）</h3>
+<p>通过PUBLISH，向相应的TOPIC发送信息。</p>
+<h4 id="_11">报头</h4>
+<p>示例：30 <LENGTH> <LENGTH> <LENGTH> ${TOPIC}</p>
+<h5 id="_12">固定报头</h5>
+<p><strong>固定位</strong> 30</p>
+<p><strong>剩余长度字段</strong>  <LENGTH>， <em>固定报头之后的所有字段长度</em></p>
+<h5 id="_13">可变报头</h5>
+<p><strong>TOPIC</strong> <LENGTH> <LENGTH> ${TOPIC}</p>
+<h4 id="_14">载荷</h4>
+<p>示例：{"id":"15","version":"1.0","params":{"Temp": 02,"Hum": 02,"Gas": 02},"method":"thing.event.property.set"}</p>
+<p>载荷无需声明长度，载荷内容如4.3中所示。</p>
+<h3 id="54-ping">5.4 PING</h3>
+<p><strong>报文</strong> C0 00</p>
+<p><strong>响应</strong> D0 00</p>
+<h3 id="55-disconnect">5.5 断开 DISCONNECT</h3>
+<p><strong>报文</strong> E0 00</p>
+<p>以上是对于MQTT协议简单的分析，掌握了MQTT的套路后可以根据官方协议手册自行取用。</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.0f659f14.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

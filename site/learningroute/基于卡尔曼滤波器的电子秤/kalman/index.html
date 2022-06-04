@@ -1,0 +1,694 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/learningroute/%E5%9F%BA%E4%BA%8E%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E7%94%B5%E5%AD%90%E7%A7%A4/kalman/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.0">
+    
+    
+      
+        <title>卡尔曼滤波器算法 - DOC316</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fd896c8a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="DOC316" class="md-header__button md-logo" aria-label="DOC316" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DOC316
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              卡尔曼滤波器算法
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DOC316" class="md-nav__button md-logo" aria-label="DOC316" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    DOC316
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          学习路径
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="学习路径" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          学习路径
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IOT/" class="md-nav__link">
+        IOT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        基于卡尔曼滤波器的电子秤
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          知识技巧
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="知识技巧" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          知识技巧
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/MLSA/" class="md-nav__link">
+        MLSA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+        滤波器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/PID/pid/" class="md-nav__link">
+        PID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tricks/%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/" class="md-nav__link">
+        无线定位技术
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          资源列表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="资源列表" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          资源列表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resource/resource/" class="md-nav__link">
+        软件资源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resource/link/" class="md-nav__link">
+        网站资源
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/tutorial/" class="md-nav__link">
+        参与编辑
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          关于
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/revision/" class="md-nav__link">
+        修订记录
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    算法推导与分析
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    代码实现
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="_1">卡尔曼滤波器算法</h1>
+<p>1960年，卡尔曼发表了他著名的用递归方法解决离散数据线性滤波问题的论文。 从那以后，得益于数字计算技术的进步，卡尔曼滤波器已成为推广研究和应用的主题，尤其是在自主或协助导航领域。</p>
+<p>卡尔曼滤波器由一系列递归数学公式描述。它们提供了一种高效可计算的方法来估计过程的状态，并使估计均方误差最小。 卡尔曼滤波器应用广泛且功能强大：它可以估计信号的过去和当前状态，甚至能估计将来的状态，即使并不知道模型的确切性质。</p>
+<div class="admonition tip">
+<p class="admonition-title">系列视频</p>
+<p>想要学习卡尔曼滤波器，个人推荐该系列视频： <a href="https://www.bilibili.com/video/BV1ez4y1X7eR">卡尔曼滤波器(b站)</a>
+一些资料：<a href="https://pan.baidu.com/s/1bKELOhi6kIZ5C52OxSLPLg">百度网盘</a> 提取码：e26g"</p>
+</div>
+<h2 id="_2">算法推导与分析</h2>
+<p>首先将系统分为测量量<span class="arithmatex">\(x_k\)</span> 和过程量<span class="arithmatex">\(Z_k\)</span> ,</p>
+<div class="arithmatex">\[
+    x_k=Ax_{k-1}+Bu_{k-1}+w_{k-1} \\Z_k=Hx_k+v_k
+\]</div>
+<p>其中，<span class="arithmatex">\(w\)</span> 为过程噪声，假设其符合正态分布<span class="arithmatex">\(P(w)\sim(0,Q)\)</span> ；<span class="arithmatex">\(v\)</span> 为测量噪声，假设其符合正态分布 <span class="arithmatex">\(P(v)\sim(0,R)\)</span>。 由于噪声无法估计和测量，因此设先验估计和测得估计两中间量</p>
+<div class="arithmatex">\[ \hat{x_k^-}=Ax_{k-1}+Bu_{k-1} \\ \hat{{x_k}_{mea}}=Hx_k\]</div>
+<p>卡尔曼滤波算法经过加权后的结果称作后验估计<span class="arithmatex">\(\hat{x_k}\)</span></p>
+<div class="arithmatex">\[ \hat{x_k}=\hat{{x_k}^-}+G\left(\hat{x_{k_{mea}}}-\hat{{x_k}^-}\right)\\G=K_kH \]</div>
+<p>若<span class="arithmatex">\(G=0\)</span> ，后验估计等于先验估计，若 <span class="arithmatex">\(G=1\)</span> ，后验估计等于测得估计，即 <span class="arithmatex">\(G\)</span>越大，系统越相信测量量。同时 <span class="arithmatex">\(K_k\)</span>与<span class="arithmatex">\(G\)</span>成正比，<span class="arithmatex">\(K_k=0\)</span> ，后验估计等于先验估计，
+<span class="arithmatex">\(K_k=H^-\)</span>，后验估计等于测的估计。而由于不知道误差，因此也无法设定<span class="arithmatex">\(K_k\)</span> ，故引入过程误差</p>
+<div class="arithmatex">\[ e_k=x_k-\hat{x_k} \]</div>
+<p>其中假设<span class="arithmatex">\(e_k\)</span>符合正态分布<span class="arithmatex">\(P(e_k)\sim(0,P_k)\)</span>，其量化了实际值与后验估计的差距。其中，</p>
+<div class="arithmatex">\[ P_k=E\left[e\ e^T\right]=E\left[\left(x_k-\hat{x_k}\right)\left(x_k-\hat{x_{k-1}}\right)^T\right] \]</div>
+<p>联立上式，使<span class="arithmatex">\(\frac{dtr(P_k)}{dK_k}\)</span>为0，即寻找 <span class="arithmatex">\(P_k\)</span>最小自然方差，使 <span class="arithmatex">\(K_k\)</span>最优，经推导得卡尔曼算法核心，卡尔曼增益</p>
+<div class="arithmatex">\[ K_k=\frac{P_k^-H^T}{HP_k^-H^T+R} \]</div>
+<p>若调整<span class="arithmatex">\(R\)</span> ，<span class="arithmatex">\(R\)</span> 越大， <span class="arithmatex">\(K_k \rightarrow 0\)</span> ，系统相信估算值而非测量值，反之则更相信测量值。 其中 <span class="arithmatex">\(P_k^-\)</span> 为先验估计部分，除表示实际值与后验估计差值的<span class="arithmatex">\(e_k\)</span>
+以外，定义实际值与先验估计的差值<span class="arithmatex">\(e_k^-\)</span></p>
+<div class="arithmatex">\[ e_k^-=x_k-\hat{x_k^-} \]</div>
+<p>假设<span class="arithmatex">\(e_k^-\)</span>符合正态分布 <span class="arithmatex">\(P(e_k^-)\sim(0,P_k^-)\)</span> ，同样对于<span class="arithmatex">\(P_k^-\)</span> ，有</p>
+<div class="arithmatex">\[ P_k^-=AP_{k-1}A^T+Q \]</div>
+<p>可见<span class="arithmatex">\(Q\)</span>与<span class="arithmatex">\(P_k^-\)</span>成正比，<span class="arithmatex">\(R一\)</span>定时，<span class="arithmatex">\(Q\)</span>越小，<span class="arithmatex">\(K_k\rightarrow0\)</span>，系统相信估算值而非测量值，反之则更相信测量值。
+系统运行时，首先根据上一次的后验估计进行加权先验估计<span class="arithmatex">\(\hat{x_k^-}\)</span>，若为首次则可遵循预设值，或首次测量值；
+接着根据给定的过程噪声协方差矩阵<span class="arithmatex">\(Q\)</span>和上一次的误差协方差矩阵计算先验误差协方差矩阵<span class="arithmatex">\(P_k^-\)</span>，若为首次则可遵循预设值； 根据给定的测量噪声协方差矩阵<span class="arithmatex">\(R\)</span>和<span class="arithmatex">\(P_k^-\)</span>，计算卡尔曼增益<span class="arithmatex">\(K_k\)</span>；在最关键的一步中，
+通过以上关键变量和测量结果可得到后验估计，即系统给出的估计值；最后更新后验误差协方差矩阵<span class="arithmatex">\(P_k\)</span>。 使用卡尔曼滤波器的关键在于首先确定系统的性质，根据结果的连续性或离散性等选择合适的卡尔曼滤波器。
+其次，需要通过一段系统实测的数据离线调试滤波器参数，以达到最适合系统的输出结果。</p>
+<h2 id="_3">代码实现</h2>
+<p>示例为一个Python语言函数，其传入一个由原始数据构成的数组，返回一个由经卡尔曼算法估计的估计值数组。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="k">def</span> <span class="nf">Kalman</span><span class="p">(</span><span class="n">dat</span><span class="p">):</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+    <span class="c1"># 过程噪声 - 协方差矩阵</span>
+    <span class="c1"># 根据Pk-定义公式，Q与其成正比，根据K的定义公式，Pk-越小，K-&gt;0，相信估算而非测量量</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="mf">1e-2</span>
+    <span class="c1"># 测量噪声 - 协方差矩阵</span>
+    <span class="c1"># 根据K的定义公式，R越大，K-&gt;0，相信估算而非测量量</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="mf">0.8</span>
+    <span class="n">Xhat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>  <span class="c1"># 后验估计</span>
+    <span class="n">X_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>  <span class="c1"># 先验估计</span>
+    <span class="n">Kk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>  <span class="c1"># 卡尔曼增益</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>  <span class="c1"># 误差 - 协方差矩阵</span>
+    <span class="n">P_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>  <span class="c1"># 先验误差</span>
+    <span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">Xhat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">dat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">times</span><span class="p">):</span>
+        <span class="c1"># X - ^ (k) = A * X ^ (k - 1)</span>
+        <span class="n">X_hat</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">Xhat</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># P - (n) = A * P(k - 1) * AT + Q</span>
+        <span class="n">P_</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">Q</span>
+        <span class="c1"># Kk[n] = P_[n] / (P_[n] + R)</span>
+        <span class="n">Kk</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">P_</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">P_</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">R</span><span class="p">)</span>
+        <span class="c1"># Xhat[n] = X_hat[n] + Kk[n] * (dat[n] - X_hat[n])</span>
+        <span class="n">Xhat</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_hat</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">Kk</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">X_hat</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+        <span class="c1"># P[n] = (1 - Kk[n]) * P_[n]</span>
+        <span class="n">P</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Kk</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="o">*</span> <span class="n">P_</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">Xhat</span>
+</code></pre></div>
+<p>示例为一个C语言函数，展示了卡尔曼滤波迭代无需存储更多历史值的特性。该函数由read_data()读入当次原始数据raw，并根据公式计算。
+最终返回该次迭代后的卡尔曼估计值est。</p>
+<div class="highlight"><pre><span></span><code><span class="kt">float</span><span class="w"> </span><span class="nf">Kakman</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// 过程噪声 - 协方差矩阵, 根据Pk-定义公式，Q与其成正比，根据K的定义公式，Pk-越小，K-&gt;0，相信估算而非测量量</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0005</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// 测量噪声 - 协方差矩阵, 根据K的定义公式，R越大，K-&gt;0，相信估算而非测量量</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.001</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">Kk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">Xhat_prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_data</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">Xhat_cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">X_hat_prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">X_hat_cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">P__cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">P__prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">P_prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">P_cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">raw</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">est</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">--</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">raw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">read_data</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// X - ^ (k) = A * X ^ (k - 1)</span>
+<span class="w">        </span><span class="n">X_hat_cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Xhat_prev</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// X_hat[n] = Xhat[n - 1]</span>
+<span class="w">        </span><span class="c1">// P - (n) = A * P(k - 1) * AT + Q</span>
+<span class="w">        </span><span class="c1">// P_[n] = P[n - 1] + Q</span>
+<span class="w">        </span><span class="n">P__cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P_prev</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Q</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Kk[n] = P_[n] / (P_[n] + R)</span>
+<span class="w">        </span><span class="n">Kk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P__cur</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">P__cur</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">R</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Xhat[n] = X_hat[n] + Kk[n] * (dat[n] - X_hat[n])</span>
+<span class="w">        </span><span class="n">Xhat_cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X_hat_cur</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Kk</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">raw</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">X_hat_cur</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// P[n] = (1 - Kk[n]) * P_[n]</span>
+<span class="w">        </span><span class="n">P_cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Kk</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">P__cur</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">P_prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P_cur</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">P__prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P__cur</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">X_hat_prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X_hat_cur</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">Xhat_prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Xhat_cur</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">est</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Xhat_cur</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">est</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.0f659f14.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1150 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/tricks/PID/pid/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.0">
+    
+    
+      
+        <title>PID - DOC316</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fd896c8a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pid" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="DOC316" class="md-header__button md-logo" aria-label="DOC316" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DOC316
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PID
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DOC316" class="md-nav__button md-logo" aria-label="DOC316" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    DOC316
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          学习路径
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="学习路径" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          学习路径
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learningroute/IOT/" class="md-nav__link">
+        IOT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learningroute/%E5%9F%BA%E4%BA%8E%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E7%94%B5%E5%AD%90%E7%A7%A4/" class="md-nav__link">
+        基于卡尔曼滤波器的电子秤
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          知识技巧
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="知识技巧" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          知识技巧
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MLSA/" class="md-nav__link">
+        MLSA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+        滤波器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          PID
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        PID
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    基本讲解
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pid_1" class="md-nav__link">
+    为什么需要PID三个环节的控制？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p-i-d" class="md-nav__link">
+    P I D分别起什么作用
+  </a>
+  
+    <nav class="md-nav" aria-label="P I D分别起什么作用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pproportional" class="md-nav__link">
+    P（Proportional 比例环节）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iintegral" class="md-nav__link">
+    I（Integral 积分环节）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ddifferential" class="md-nav__link">
+    D（Differential 微分环节）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pid_2" class="md-nav__link">
+    PID的两种不同实现方式
+  </a>
+  
+    <nav class="md-nav" aria-label="PID的两种不同实现方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pid_3" class="md-nav__link">
+    位置式PID
+  </a>
+  
+    <nav class="md-nav" aria-label="位置式PID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    代码实现(C语言)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pid_4" class="md-nav__link">
+    增量式PID
+  </a>
+  
+    <nav class="md-nav" aria-label="增量式PID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c_1" class="md-nav__link">
+    代码实现（C语言）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pidpid" class="md-nav__link">
+    位置式PID与增量式PID对比
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pid_5" class="md-nav__link">
+    PID 参数选取方法
+  </a>
+  
+    <nav class="md-nav" aria-label="PID 参数选取方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    各个参数特点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    试凑法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    临界比例法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    一般调节法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/" class="md-nav__link">
+        无线定位技术
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          资源列表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="资源列表" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          资源列表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resource/resource/" class="md-nav__link">
+        软件资源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resource/link/" class="md-nav__link">
+        网站资源
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/tutorial/" class="md-nav__link">
+        参与编辑
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          关于
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/revision/" class="md-nav__link">
+        修订记录
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    基本讲解
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pid_1" class="md-nav__link">
+    为什么需要PID三个环节的控制？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p-i-d" class="md-nav__link">
+    P I D分别起什么作用
+  </a>
+  
+    <nav class="md-nav" aria-label="P I D分别起什么作用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pproportional" class="md-nav__link">
+    P（Proportional 比例环节）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iintegral" class="md-nav__link">
+    I（Integral 积分环节）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ddifferential" class="md-nav__link">
+    D（Differential 微分环节）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pid_2" class="md-nav__link">
+    PID的两种不同实现方式
+  </a>
+  
+    <nav class="md-nav" aria-label="PID的两种不同实现方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pid_3" class="md-nav__link">
+    位置式PID
+  </a>
+  
+    <nav class="md-nav" aria-label="位置式PID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    代码实现(C语言)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pid_4" class="md-nav__link">
+    增量式PID
+  </a>
+  
+    <nav class="md-nav" aria-label="增量式PID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c_1" class="md-nav__link">
+    代码实现（C语言）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pidpid" class="md-nav__link">
+    位置式PID与增量式PID对比
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pid_5" class="md-nav__link">
+    PID 参数选取方法
+  </a>
+  
+    <nav class="md-nav" aria-label="PID 参数选取方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    各个参数特点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    试凑法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    临界比例法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    一般调节法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<div class="admonition note">
+<p>本项目作者：麦克斯玮</p>
+</div>
+<h1 id="pid">PID闭环控制算法</h1>
+<h2 id="_1">基本讲解</h2>
+<p>PID即：Proportional（比例）、Integral（积分）、Differential（微分）的缩写。也就是说，PID算法是结合这三种环节在一起来实现一个闭环控制。PID控制应该算是应用非常广泛的控制算法了。小到控制一个元件的温度，大到控制无人机的飞行姿态和飞行速度等等，都可以使用PID控制。</p>
+<p><img alt="PID控制框架" src="https://img-blog.csdnimg.cn/20210601174526270.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTI3ODYx,size_16,color_FFFFFF,t_70" /></p>
+<p>以上是一个pid的控制框图，不懂没有关系，只需要了解它的大概执行流程就好。</p>
+<h2 id="pid_1">为什么需要PID三个环节的控制？</h2>
+<p>我们先说PID中最简单的比例控制，抛开其他两个不谈。还是用一个经典的例子吧。假设我有一个水缸，最终的控制目的是要保证水缸里的水位永远的维持在1米的高度。假设初始时刻，水缸里的水位是0.2米，那么当前时刻的水位和目标水位之间是存在一个误差的error，且error为0.8.这个时候，假设旁边站着一个人，这个人通过往缸里加水的方式来控制水位。如果单纯的用比例控制算法，就是指加入的水量u和误差error是成正比的。即
+u=kp×error。 假设kp取0.5，那么t=1时（表示第1次加水，也就是第一次对系统施加控制），那么u=0.5×0.8=0.4，所以这一次加入的水量会使水位在0.2的基础上上升0.4，达到0.6。
+接着，t=2时刻（第2次施加控制），当前水位是0.6，所以error是0.4。u=0.5×0.4=0.2，会使水位再次上升0.2，达到0.8。如此这么循环下去，就是比例控制算法的运行方法。可以看到，最终水位会达到我们需要的1米。
+但是，单单的比例控制存在着一些不足，其中一点就是 –<strong>稳态误差</strong>！ 像上述的例子，根据kp取值不同，系统最后都会达到1米，<strong>只不过kp大了到达的快，kp小了到达的慢一些</strong>
+。不会有稳态误差。但是，考虑另外一种情况，假设这个水缸在加水的过程中，存在漏水的情况，<strong>假设每次加水的过程，都会漏掉0.1米高度的水</strong>
+。仍然假设kp取0.5，那么会存在着某种情况，假设经过几次加水，水缸中的水位到0.8时，水位将不会再变换！！！因为，水位为0.8，则误差error=0.2. 所以每次往水缸中加水的量为u=0.5<em>
+0.2=0.1.同时，每次加水，缸里又会流出去0.1米的水！！！加入的水和流出的水相抵消，水位将不再变化！！也就是说，我的目标是1米，但是最后系统达到0.8米的水位就不再变化了，且系统已经达到稳定。由此产生的误差就是稳态误差了。</em><em>
+（在实际情况中，这种类似水缸漏水的情况往往更加常见，比如控制汽车运动，摩擦阻力就相当于是“漏水”，控制机械臂、无人机的飞行，各类阻力和消耗都可以理解为本例中的“漏水”）</em><em>
+所以，</em><em>单独的比例控制，在很多时候并不能满足要求</em>*。</p>
+<h2 id="p-i-d">P I D分别起什么作用</h2>
+<h3 id="pproportional">P（Proportional 比例环节）</h3>
+<p>比例控制算法，我感觉应该是PID算法中比较核心的部分，感觉他是整个PID中的主力，当kp值越大的时候，控制系统的响应速度就越快，但是同时也会带来更大的震荡。至于其他的像积分控制算法，和微分控制算法，是为了消除误差，减少震荡。<strong>
+P的具体作用见上一节介绍。</strong></p>
+<h3 id="iintegral">I（Integral 积分环节）</h3>
+<p>积分控制算法，就是为了<strong>消除稳态误差</strong>（在理解上可以参考积分的几何意义），由于积分是从0时刻一直积分到当前时刻 t，并且是对e(t)函数进行积分。</p>
+<p>在只有P(比例)环节的时候，在上面我们可以看到，在理想状态下也是可以满足控制需求，但是在真实场景中无法达到。所以<strong>引入I(积分)来消除静态误差。</strong>在到达节点位置之前，e(t)
+始终是正的，也就是它的积分始终是大于0的，如果系统存在稳态误差的话，由于误差一直不变，但是积分变呀，积分会一直积下去，之前的稳态误差是中和了比例控制算法的值，现在有一个一直增长的积分，导致每次u(t)
+的输出也在一直的增大，从而稳态误差就被消除了。到最后，误差为零了，而此时的e(t)也为0了，积分也就固定在某一个值了。从而每次的稳态误差就都可以被消除掉。
+如果到达节点位置之后了，也就是冲过了节点的指定位置，这时候误差就变为了负的，然后由于积分正负可以相减，同样可以很好的适应这种情况。</p>
+<h3 id="ddifferential">D（Differential 微分环节）</h3>
+<p>用了积分控制算法，现在可以消除稳定误差了，但是考虑下面几种情况：</p>
+<p>1.现在的情况是不存在稳态误差，但是存在积分控制算法，那么问题就出现了，当到达了目的位置后，哪怕误差已经是0了，但是积分控制算法那里还是一个整数，导致下一次输出u(t)
+仍然为一个整数，而不是0，这样的话，就会越过目的位置，虽然之后误差就变成了负数，又会回落回目的位置，但是这样始终是震荡的，而不是一直稳定下去。 2.在初始状态下，如果Kp或者Ki设置的过大，则会导致u(t)的变化幅度过大。
+综上，在上述情况下，加入微分控制就很有必要，其实<strong>微分控制的作用就是防止幅度过大</strong>（防止超调），导致震荡或者超调，微分就是为了在输出斜率变的太大之前，在系统中引入一个<strong>有效的早期修正信号</strong>
+。微分可以防止震荡，比如当控制无人机悬停到一定高度，kd的作用就是如何让他停稳。</p>
+<p>当存在稳态误差的时候，由于微分对于常数的求导是0，故微分不能解决稳态误差的问题。单独使用意义不大，故需要与比例积分共同配合使用，构成PD或PID控制。</p>
+<p><em>从时间的角度讲，比例作用是针对系统当前误差进行控制，积分作用则针对系统误差的历史，而微分作用则反映了系统误差的变化趋势，这三者的组合是“过去、现在、未来”的完美结合。同样这三个参数也不可以设置的过大，我们要找到一个平衡点（调参）。</em></p>
+<h2 id="pid_2">PID的两种不同实现方式</h2>
+<p><strong>数字 PID 控制算法因时间离散化不同，通常分为位置式 PID 控制算法和增量式 PID 控制算法。</strong></p>
+<h3 id="pid_3">位置式PID</h3>
+<p><img alt="位置式PID" src="https://img-blog.csdnimg.cn/20191222100349868.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FsZXhjZWw=,size_16,color_FFFFFF,t_70" /></p>
+<p>也就是位置式PID是当前系统的实际位置，与你想要达到的预期位置的偏差，进行PID控制</p>
+<p>因为有误差积分 ∑e(i)，一直累加，也就是当前的输出u(k)与过去的所有状态都有关系，用到了误差的累加值；（误差e会有误差累加），输出的u(k)对应的是执行机构的实际位置，，一旦控制输出出错(控制对象的当前的状态值出现问题 )，u(k)
+的大幅变化会引起系统的大幅变化</p>
+<p>并且位置式PID在积分项达到饱和时,误差仍然会在积分作用下继续累积，一旦误差开始反向变化，系统需要一定时间从饱和区退出，所以在u(k)达到最大和最小时，要停止积分作用，并且要有积分限幅和输出限幅。</p>
+<p>而位置式 PID 适用于执行机构不带积分部件的对象，如舵机和平衡小车的直立和温控系统的控制。 缺点：</p>
+<p>1）、由于全量输出，所以每次输出均与过去状态有关，计算时要对ek进行累加，工作量大；</p>
+<p>2）、因为计算机输出的uk对应的是执行机构的实际位置，如果计算机出现故障，输出的uk将大幅度变化，会引起执行机构的大幅度变化，有可能因此造成严重的生产事故，这在实生产际中是不允许的</p>
+<p>3）、如果偏差一直是正的或者负的，位置式PID在积分项会一直累积，因此必须对积分项进行限幅，同时也要对输出进行限幅。当偏差开始反向变化，位置式PID在积分项需要一段时间才能从最大值减下来，造成输出的滞后。</p>
+<h4 id="c">代码实现(C语言)</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">//相关值结构体</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">target_val</span><span class="p">;</span><span class="w">           </span><span class="c1">//目标值</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">actual_val</span><span class="p">;</span><span class="w">             </span><span class="c1">//实际值</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w">                        </span><span class="c1">//定义偏差值</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">err_last</span><span class="p">;</span><span class="w">               </span><span class="c1">//定义上一个偏差值</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">Kp</span><span class="p">,</span><span class="n">Ki</span><span class="p">,</span><span class="n">Kd</span><span class="p">;</span><span class="w">                 </span><span class="c1">//定义比例、积分、微分系数</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">erradd</span><span class="p">;</span><span class="w">                 </span><span class="c1">//定义积分值</span>
+<span class="p">}</span><span class="n">_pid</span><span class="p">;</span><span class="w"></span>
+<span class="c1">//位置式pid算法实现，可以结合位置式pid算式理解</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">PID_realize</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">temp_val</span><span class="p">,</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">speed</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">pid</span><span class="p">.</span><span class="n">target_val</span><span class="o">=</span><span class="n">temp_val</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/*计算目标值与实际值的误差*/</span><span class="w"></span>
+<span class="w">  </span><span class="n">pid</span><span class="p">.</span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">target_val</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">speed</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">pid</span><span class="p">.</span><span class="n">erradd</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/*PID算法实现*/</span><span class="w"></span>
+<span class="w">  </span><span class="n">pid</span><span class="p">.</span><span class="n">actual_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">Kp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">err</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">                   </span><span class="n">pid</span><span class="p">.</span><span class="n">Ki</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">erradd</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">                   </span><span class="n">pid</span><span class="p">.</span><span class="n">Kd</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="p">.</span><span class="n">err</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">err_last</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/*误差传递*/</span><span class="w"></span>
+<span class="w">  </span><span class="n">pid</span><span class="p">.</span><span class="n">err_last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="cm">/*返回当前实际值*/</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">actual_val</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="pid_4">增量式PID</h3>
+<p><img alt="增量式PID" src="https://gitee.com/dame_dollar/storehouse-of-zjw/raw/master/markdown%E5%9B%BE%E7%89%87/4117DC6A4C75A908D0E1F01853C2AF44.png" /></p>
+<p>1、优点</p>
+<p>1）、根据增量式PID的表达式可以很好地看出，一旦确定了 KP、TI 、TD，<strong>只要使用前后三次测量值的偏差， 即可由公式求出控制增量</strong>。而得出的控制量▲uk对应的是近几次位置误差的增量，而不是对应与实际位置的偏差，因此没有误差累加。</p>
+<p>2）、增量式PID中不需要累加，计算量小。控制增量Δu(k)的确定仅与最近3次的采样值有关，容易通过加权处理获得比较好的控制效果，并且在系统发生问题时，增量式不会严重影响系统的工作。</p>
+<p>2、缺点：</p>
+<p>1）、积分截断效应大，有稳态误差；</p>
+<p>2）、溢出的影响大。有的被控对象用增量式则不太好；</p>
+<h4 id="c_1">代码实现（C语言）</h4>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">target_val</span><span class="p">;</span><span class="w">     </span><span class="c1">//目标值</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">actual_val</span><span class="p">;</span><span class="w">     </span><span class="c1">//实际值</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w">            </span><span class="c1">//定义当前偏差值</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">err_next</span><span class="p">;</span><span class="w">       </span><span class="c1">//定义下一个偏差值</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">err_last</span><span class="p">;</span><span class="w">       </span><span class="c1">//定义上一个偏差值</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">Kp</span><span class="p">,</span><span class="w"> </span><span class="n">Ki</span><span class="p">,</span><span class="w"> </span><span class="n">Kd</span><span class="p">;</span><span class="w">     </span><span class="c1">//定义比例、积分、微分系数</span>
+<span class="p">}</span><span class="n">_pid</span><span class="p">;</span><span class="w"></span>
+<span class="c1">//算法实现</span>
+<span class="kt">float</span><span class="w"> </span><span class="nf">PID_realize</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">temp_val</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/*传入实际值*/</span><span class="w"></span>
+<span class="w">    </span><span class="n">pid</span><span class="p">.</span><span class="n">actual_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp_val</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/*计算目标值与实际值的误差*/</span><span class="w"></span>
+<span class="w">  </span><span class="n">pid</span><span class="p">.</span><span class="n">err</span><span class="o">=</span><span class="n">pid</span><span class="p">.</span><span class="n">target_val</span><span class="o">-</span><span class="n">pid</span><span class="p">.</span><span class="n">actual_val</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/*PID算法实现*/</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">increment_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">pid</span><span class="p">.</span><span class="n">err</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">err_next</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">Ki</span><span class="o">*</span><span class="n">pid</span><span class="p">.</span><span class="n">err</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">Kd</span><span class="o">*</span><span class="p">(</span><span class="n">pid</span><span class="p">.</span><span class="n">err</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">err_next</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">err_last</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/*传递误差*/</span><span class="w"></span>
+<span class="w">    </span><span class="n">pid</span><span class="p">.</span><span class="n">err_last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">err_next</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">pid</span><span class="p">.</span><span class="n">err_next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/*返回增量值*/</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">increment_val</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="pidpid">位置式PID与增量式PID对比</h3>
+<ul>
+<li><strong>增量式算法</strong>不需要对积分项累加，控制量增量至于近几次误差有关，计算误差对控制量影响较小。而<strong>位置式算法</strong>要对近几次的偏差进行积分累加，容易产生较大的累加误差。</li>
+<li><strong>增量式算法</strong>控制输出的是控制量增量，并无积分作用，因此该方法适合用于执行机构带积分作用的对象，如步进电机。而<strong>位置式算法</strong>适合用于执行机构不带积分不见的对象。</li>
+<li><strong>增量式算法</strong>得出的是控制量的增量，例如在阀门控制中，只输出阀门开度的变化部分，误动作影响小，必要时还可通过逻辑判断限制或禁止本次输出，不会严重影响系统的工作；而<strong>位置式算法</strong>的输出直接对应对象的输出，因此对系统影响较大。</li>
+<li>在进行PID控制时，<strong>位置式PID</strong>需要有积分限幅和输出限幅，而增量式只需要输出限幅。</li>
+</ul>
+<h2 id="pid_5">PID 参数选取方法</h2>
+<h3 id="_2">各个参数特点</h3>
+<ul>
+<li>
+<p>比例调节作用特点：调节作用快，系统一出现偏差，调节器立即将偏差放大输出；</p>
+</li>
+<li>
+<p>积分调节作用特点：积分调节作用的输出变化与输入偏差的积分成正比，积分调节作用的</p>
+</li>
+</ul>
+<p>输出不仅取决于偏差的大小，还取决于偏差存在的时间，只要有偏差存在, 尽管偏差可能很</p>
+<p>小，但它存在的时间越长，输出信号就越大，只有消除偏差，输出才停止变化；</p>
+<ul>
+<li>微分调节作用特点：微分调节的输出是与被调量的变化率成正比，微分调节越大，越能提</li>
+</ul>
+<p>前响应，但是也会将不必要的偏差放大；</p>
+<h3 id="_3">试凑法</h3>
+<ul>
+<li>要根据设计系统的具体情况，选择合适的<strong>采样周期</strong>，多次试凑，选择性能较好的一个作为最后采样周期。早整定参数时必须要认真观察系统的相应情况，根据响应情况来调整参数。</li>
+</ul>
+<p>#### 具体方法</p>
+<pre><code>- 先是比例，然后积分，最后微分；
+- 调试时，将PID参数置于影响最小的位置，即P最大，I最大，D最小；
+- 按纯比例系统整定比例度，使其得到比较理想的调节过程曲线，然后再把比例度放大 1.2倍左右，将积分时间从大到小改变，使其得到较好的调节过程曲线；
+- 最后在这个积分时间下重新改变比例度，再看调节过程曲线有无改善；
+- 如有改善，可将原整定的比例度减少，改变积分时间，这样多次的反复，就可得到合适的比例度和积分时间；
+- 如果在外界的干扰下系统稳定性不好，可把比例度和积分时间适当增加一些，使系统足够稳定；
+- 将整定好的比例度和积分时间适当减小，加入微分作用，以得到超调量最小、调节作用时间最短的调节过程。
+</code></pre>
+<h3 id="_4">临界比例法</h3>
+<p>临界比例法：适用于闭环控制系统里将调节器置于纯比例的作用下，从大到小逐渐改变调节器的比例度，并且得到等幅度的震荡过程就叫做临界比例度；</p>
+<ul>
+<li>
+<p>1.将调节器的积分置于最大，微分置于 0，比例度系数适当即可平衡一段时间，把系统投放到自动运行中。</p>
+</li>
+<li>
+<p>2.然后将比例逐渐增大，增大到产生等幅现象，并记录下等幅时的临界比例系数（δk）和两个波峰的时间间隔（Tk 单位：min）。</p>
+</li>
+<li>
+<p>3.根据记下的比例系数和周期，采用经验公式，计算调节器的参数。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>控制方法</th>
+<th>Kp</th>
+<th>Ki</th>
+<th>Kd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P</td>
+<td>2×δk</td>
+<td>----</td>
+<td>----</td>
+</tr>
+<tr>
+<td>PI</td>
+<td>2.2×δk</td>
+<td>0.85×Tk</td>
+<td>----</td>
+</tr>
+<tr>
+<td>PD</td>
+<td>1.8×δk</td>
+<td>----</td>
+<td>0.1×Tk</td>
+</tr>
+<tr>
+<td>PID</td>
+<td>1.7×δk</td>
+<td>0.5×Tk</td>
+<td>0.125×Tk</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">一般调节法</h3>
+<p>一般步骤为：</p>
+<p>a. 确定比例增益 P ：确定比例增益 P 时，首先去掉 PID 的积分项和微分项，一般是令 Ti=0、Td=0（具体见 PID 的参数设定说明），使 PID 为纯比例调节。输入设定为系统允许的最大值的 60%~70%，由 0
+逐渐加大比例增益 P，直至系统出现振荡；再反过来，从此时的比例增益 P 逐渐减小，直至系统振荡消失，记录此时的比例增益 P，设定 PID 的比例增益 P为当前值的 60%~70%。比例增益 P 调试完成。</p>
+<p>b. 确定积分时间常数 Ti 比例增益 P 确定后，设定一个较大的积分时间常数 Ti 的初值，然后逐渐减小 Ti，直至系统出现振荡，之后在反过来，逐渐加大 Ti，直至系统振荡消失。记录此时的 Ti，设定 PID 的积分时间常数 Ti
+为当前值的 150%~180%。积分时间常数 Ti 调试完成。</p>
+<p>c. 确定积分时间常数 Td 积分时间常数 Td 一般不用设定，为 0 即可。若要设定，与确定 P 和 Ti 的方法相同，取不振荡时的 30%。</p>
+<p>d. 系统空载、带载联调，再对 PID 参数进行微调，直至满足要求：理想时间两个波，前高后低 4 比 1。</p>
+<p><a href="[[野火]电机应用开发实战指南-基于STM32 — 野火产品资料下载中心 文档 (embedfire.com)](https://doc.embedfire.com/products/link/zh/latest/tutorial/ebf_motor_tutorial.html)">参数调整方法参考来源，感兴趣的话可以进去下载</a></p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
+      
+        
+        <a href="../../%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 滤波器" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              滤波器
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/" class="md-footer__link md-footer__link--next" aria-label="下一页: 无线定位技术" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              无线定位技术
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.0f659f14.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
