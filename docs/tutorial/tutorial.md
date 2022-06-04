@@ -13,6 +13,7 @@ Doc316使用Read the Docs进行托管，将Github仓库import到该网站，并�
 推荐教程：
 
 + [Read the Docs 从懵逼到入门](http://t.csdn.cn/t1Tlw)
++ [Read the Docs 官方 - 使用MkDocs构建](https://docs.readthedocs.io/en/stable/intro/getting-started-with-mkdocs.html)
 
 ## 2.Markdown介绍
 

@@ -7,7 +7,7 @@
 !!! tip "系列视频"
 
     想要学习卡尔曼滤波器，个人推荐该系列视频： [卡尔曼滤波器(b站)](https://www.bilibili.com/video/BV1ez4y1X7eR)
-    一些资料：[百度网盘](https://pan.baidu.com/s/1bKELOhi6kIZ5C52OxSLPLg) 提取码：e26g"
+    一些资料：[百度网盘](https://pan.baidu.com/s/1bKELOhi6kIZ5C52OxSLPLg) 提取码：e26g
 
 ## 算法推导与分析
 

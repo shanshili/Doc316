@@ -4,9 +4,20 @@ repo_url: https://github.com/FZR95/Doc316
 repo_name: Doc316
 nav:
   - 学习路径:
-      - IOT: learningroute/IOT/index.md
-#          - MQTT: learningroute/IOT/MQTT.md
-      - 基于卡尔曼滤波器的电子秤: learningroute/基于卡尔曼滤波器的电子秤/index.md
+      - IOT:
+        - 开始: learningroute/IOT/index.md
+        - 前言与技术路线: learningroute/IOT/面向初学者的物联网全栈开发指南/面向初学者的物联网全栈开发指南 - 1 -.md
+        - 硬件侧: learningroute/IOT/面向初学者的物联网全栈开发指南/面向初学者的物联网全栈开发指南 - 2 -.md
+        - IOT平台和MQTT协议: learningroute/IOT/面向初学者的物联网全栈开发指南/面向初学者的物联网全栈开发指南 - 3 -.md
+        - 硬件侧上云: learningroute/IOT/面向初学者的物联网全栈开发指南/面向初学者的物联网全栈开发指南 - 4 -.md
+        - uniCloud对接: learningroute/IOT/面向初学者的物联网全栈开发指南/面向初学者的物联网全栈开发指南 - 5 -.md
+        - uni-app起步: learningroute/IOT/面向初学者的物联网全栈开发指南/面向初学者的物联网全栈开发指南 - 6 -.md
+        - MQTT: learningroute/IOT/MQTT.md
+      - 基于卡尔曼滤波器的电子秤:
+        - 开始: learningroute/基于卡尔曼滤波器的电子秤/index.md
+        - 电桥: learningroute/基于卡尔曼滤波器的电子秤/bridge.md
+        - 卡尔曼算法: learningroute/基于卡尔曼滤波器的电子秤/kalman.md
+        - 电子秤: learningroute/基于卡尔曼滤波器的电子秤/scale.md
   - 知识技巧:
       - MLSA: tricks/MLSA/index.md
       - 滤波器: tricks/滤波器/index.md
@@ -17,7 +28,7 @@ nav:
       - 网站资源: resource/link.md
   - 参与编辑: tutorial/tutorial.md
   - 关于:
-      - 介绍: index.md
+#      - 介绍: index.md
       - 修订记录: about/revision.md
 
 theme:
@@ -38,7 +49,7 @@ theme:
   features:
     - header.autohide
     - navigation.instant
-#    - navigation.tabs
+    #    - navigation.tabs
     - navigation.sections
 #    - navigation.top
 plugins:
@@ -56,7 +67,7 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - toc:
-#      permalink: true
+      #      permalink: true
       toc_depth: 4
 
 extra_javascript:

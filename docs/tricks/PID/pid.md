@@ -221,4 +221,4 @@ c. 确定积分时间常数 Td 积分时间常数 Td 一般不用设定，为 0 
 
 d. 系统空载、带载联调，再对 PID 参数进行微调，直至满足要求：理想时间两个波，前高后低 4 比 1。
 
-[参数调整方法参考来源，感兴趣的话可以进去下载]([[野火\]电机应用开发实战指南-基于STM32 — 野火产品资料下载中心 文档 (embedfire.com)](https://doc.embedfire.com/products/link/zh/latest/tutorial/ebf_motor_tutorial.html))
+[参数调整方法参考来源，感兴趣的话可以进去下载](https://doc.embedfire.com/products/link/zh/latest/tutorial/ebf_motor_tutorial.html)
