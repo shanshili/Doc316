@@ -1,8 +1,11 @@
 site_name: DOC316
 site_url: https://example.com/
+repo_url: https://github.com/FZR95/Doc316
+repo_name: Doc316
 nav:
   - 学习路径:
       - IOT: learningroute/IOT/index.md
+#          - MQTT: learningroute/IOT/MQTT.md
       - 基于卡尔曼滤波器的电子秤: learningroute/基于卡尔曼滤波器的电子秤/index.md
   - 知识技巧:
       - MLSA: tricks/MLSA/index.md
@@ -32,6 +35,12 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
+  features:
+    - header.autohide
+    - navigation.instant
+#    - navigation.tabs
+    - navigation.sections
+#    - navigation.top
 plugins:
   - search:
       separator: '[\s\u200b\-]'
@@ -40,11 +49,15 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
   - attr_list
+  - tables
   - md_in_html
   - footnotes
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - toc:
+#      permalink: true
+      toc_depth: 4
 
 extra_javascript:
   - javascripts/mathjax.js
