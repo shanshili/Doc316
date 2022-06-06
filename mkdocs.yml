@@ -1,6 +1,6 @@
 site_name: DOC316
-site_url: https://example.com/
-repo_url: https://github.com/FZR95/Doc316
+site_url: https://doc316.readthedocs.io/
+repo_url: https://github.com/FZR95/Doc316/tree/MkDocs
 repo_name: Doc316
 nav:
   - 学习路径:
