@@ -19,6 +19,7 @@ nav:
         - 卡尔曼算法: learningroute/基于卡尔曼滤波器的电子秤/kalman.md
         - 电子秤: learningroute/基于卡尔曼滤波器的电子秤/scale.md
   - 知识技巧:
+      - 电子管: tricks/电子管/电子管.md
       - MLSA: tricks/MLSA/index.md
       - 滤波器: tricks/滤波器/index.md
       - PID: tricks/PID/pid.md
